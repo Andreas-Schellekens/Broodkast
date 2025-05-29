@@ -1,7 +1,7 @@
-const { SlashCommandBuilder } = require("discord.js");
-const cowsay = require("cowsay");
+import { SlashCommandBuilder } from "discord.js";
+import cowsay from "cowsay";
 
-module.exports = {
+export default {
     data: new SlashCommandBuilder()
         .setName("koepraat")
         .setDescription("Praat als een koe")
@@ -14,7 +14,7 @@ module.exports = {
     async execute(interaction) {
         const text = interaction.options.getString("text");
 
-        // Limit input length to prevent spam or formatting issues
+
         if (text.length > 50) {
             return interaction.reply({
                 content: "Das te lang, womp womp minder dan 50 karakters aub",
@@ -24,8 +24,7 @@ module.exports = {
 
         const cowOutput = cowsay.say({
             text: text,
-            e: "oo",
-            T: "U "
+            e: "oo"
         });
 
         await interaction.reply({

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A discord bot named broodkast!",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/Andreas-Schellekens/Broodkast#readme",
   "dependencies": {
+    "@discord-player/extractor": "^7.1.0",
     "@discordjs/opus": "^0.10.0",
     "@discordjs/rest": "^2.5.0",
     "@discordjs/voice": "^0.18.0",

@@ -1,11 +1,16 @@
-// 1. Import required modules
-const { Client, GatewayIntentBits, Collection } = require("discord.js");
-const { Player } = require("discord-player");
-const fs = require("fs");
-const path = require("path");
-require("dotenv").config();
+import { Client, GatewayIntentBits, Collection } from "discord.js";
+import { Player } from "discord-player";
+import { DefaultExtractors } from "@discord-player/extractor";
+import fs from "fs";
+import path from "path";
+import dotenv from "dotenv";
+import { fileURLToPath } from "url";
 
-// 2. Create Discord client
+dotenv.config();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
@@ -13,20 +18,28 @@ const client = new Client({
     ]
 });
 
-// 3. Attach command collection and player
 client.commands = new Collection();
 client.player = new Player(client);
 
-// 4. Dynamically load all command files
+
+await client.player.extractors.loadMulti(DefaultExtractors);
+
 const commandsPath = path.join(__dirname, "commands");
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith(".js"));
 
 for (const file of commandFiles) {
-    const command = require(`./commands/${file}`);
-    client.commands.set(command.data.name, command);
+    const command = await import(`./commands/${file}`);
+    const cmd = command.default;
+
+    if (!cmd || !cmd.data || typeof cmd.data.name !== "string") {
+        console.warn(`Skipping invalid command file: ${file}`);
+        continue;
+    }
+
+    client.commands.set(cmd.data.name, cmd);
 }
 
-// 5. Handle interactions
+
 client.on("interactionCreate", async interaction => {
     if (!interaction.isChatInputCommand()) return;
 
@@ -36,15 +49,16 @@ client.on("interactionCreate", async interaction => {
     try {
         await command.execute(interaction, client.player);
     } catch (error) {
-        console.error(error);
-        await interaction.reply({ content: "❌ There was an error executing this command.", ephemeral: true });
+        console.error("Command execution error:", error);
+        await interaction.reply({
+            content: "There was an error executing this command.",
+            ephemeral: true
+        });
     }
 });
 
-// 6. Handle ready event
 client.once("ready", () => {
-    console.log(`✅ Logged in as ${client.user.tag}`);
+    console.log(`Logged in as ${client.user.tag}`);
 });
 
-// 7. Login to Discord
 client.login(process.env.DISCORD_TOKEN);
