@@ -59,6 +59,8 @@ client.on("interactionCreate", async interaction => {
 
 client.once("ready", () => {
     console.log(`Logged in as ${client.user.tag}`);
+    console.log();
+    console.log("It's showtime")
 });
 
 client.login(process.env.DISCORD_TOKEN);
