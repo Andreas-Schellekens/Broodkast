@@ -1,6 +1,7 @@
 import { Client, GatewayIntentBits, Collection } from "discord.js";
 import { Player } from "discord-player";
 import { DefaultExtractors } from "@discord-player/extractor";
+import { YoutubeiExtractor } from "discord-player-youtubei";
 import fs from "fs";
 import path from "path";
 import dotenv from "dotenv";
@@ -21,8 +22,46 @@ const client = new Client({
 client.commands = new Collection();
 client.player = new Player(client);
 
-
+// YouTube streaming/search. discord-player v7's DefaultExtractors no longer ship a
+// working YouTube extractor, and Spotify/Apple Music searches bridge to YouTube for
+// the actual audio, so this must be registered first.
+//   - useYoutubeDL resolves the actual audio stream via the bundled yt-dlp binary,
+//     which is maintained against YouTube's changes — it avoids youtubei.js's
+//     "signature decipher" breakage that recurs whenever YouTube updates its player.
+//   - generateWithPoToken mints a YouTube "poToken" (via bundled bgutils-js) so
+//     search/metadata requests are less likely to be flagged as a bot.
+await client.player.extractors.register(YoutubeiExtractor, {
+    useYoutubeDL: true,
+    generateWithPoToken: true
+});
 await client.player.extractors.loadMulti(DefaultExtractors);
+
+// Announce playback state in the text channel the command was used in.
+// queue.metadata.channel is set by the /muziek play handler.
+client.player.events.on("playerStart", (queue, track) => {
+    queue.metadata?.channel?.send(`🎶 Nu aan het spelen: **${track.title}**`).catch(() => {});
+});
+
+client.player.events.on("audioTrackAdd", (queue, track) => {
+    queue.metadata?.channel?.send(`➕ Toegevoegd aan de wachtrij: **${track.title}**`).catch(() => {});
+});
+
+client.player.events.on("emptyQueue", (queue) => {
+    queue.metadata?.channel?.send("✅ De wachtrij is leeg, tot de volgende keer!").catch(() => {});
+});
+
+client.player.events.on("disconnect", (queue) => {
+    queue.metadata?.channel?.send("👋 Ik ben uit het spraakkanaal gegaan.").catch(() => {});
+});
+
+client.player.events.on("error", (queue, error) => {
+    console.error(`Player queue error: ${error.message}`);
+});
+
+client.player.events.on("playerError", (queue, error) => {
+    console.error(`Player stream error: ${error.message}`);
+    queue.metadata?.channel?.send("⚠️ Er ging iets mis tijdens het afspelen.").catch(() => {});
+});
 
 const commandsPath = path.join(__dirname, "commands");
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith(".js"));
