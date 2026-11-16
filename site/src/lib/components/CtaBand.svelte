@@ -1,10 +1,31 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import InviteButton from './InviteButton.svelte';
+	import { motion, minderBeweging, reveal } from '#lib/motion.js';
+
+	let band: HTMLElement;
+	let gloed: HTMLDivElement;
+
+	onMount(() => {
+		if (minderBeweging()) return;
+		const { gsap } = motion();
+		const ctx = gsap.context(() => {
+			// De gloed schuift mee met het scrollen en kruipt naar de knop toe.
+			gsap.fromTo(
+				gloed,
+				{ xPercent: -18, scale: 1.15 },
+				{ xPercent: 6, scale: 1, ease: 'none', scrollTrigger: { trigger: band, start: 'top bottom', end: 'bottom top', scrub: true } }
+			);
+		}, band);
+		return () => ctx.revert();
+	});
 </script>
 
-<section>
-	<img src="/thermal.webp" alt="" aria-hidden="true" width="1800" height="1200" loading="lazy" />
-	<div class="wrap inhoud">
+<section bind:this={band}>
+	<div class="gloed" bind:this={gloed} aria-hidden="true">
+		<img src="/thermal.webp" alt="" width="1800" height="1200" loading="lazy" />
+	</div>
+	<div class="wrap inhoud" data-reveal use:reveal={{ kinderen: true }}>
 		<h2 class="display">Zet de broodkast in je server</h2>
 		<p>Je voegt de bot toe via Discord. Daarna volg je je eerste bron met /volg.</p>
 		<InviteButton size="lg" />
@@ -17,15 +38,20 @@
 		overflow: hidden;
 		border-top: 1px solid var(--line);
 	}
-	img {
+	.gloed {
 		position: absolute;
 		left: 0;
 		top: 0;
 		width: 70%;
 		height: 100%;
+		pointer-events: none;
+		will-change: transform;
+	}
+	.gloed img {
+		width: 100%;
+		height: 100%;
 		object-fit: cover;
 		object-position: left bottom;
-		pointer-events: none;
 	}
 	/* Rechts zwart, zodat de roze knop op donker staat en knalt. */
 	section::before {
@@ -50,14 +76,11 @@
 		font-size: clamp(48px, 6vw, 92px);
 		line-height: 0.88;
 		max-width: 11ch;
-		text-shadow: 0 2px 30px rgb(11 8 6 / 0.35);
 	}
 	p {
 		max-width: 34ch;
 		font-weight: 500;
-		background: rgb(11 8 6 / 0.7);
-		padding: 6px 10px;
-		border-radius: var(--radius-sm);
+		color: var(--text-soft);
 	}
 	@media (max-width: 900px) {
 		.inhoud {
@@ -65,7 +88,7 @@
 			text-align: left;
 			padding-block: 96px;
 		}
-		img {
+		.gloed {
 			width: 100%;
 			opacity: 0.55;
 		}

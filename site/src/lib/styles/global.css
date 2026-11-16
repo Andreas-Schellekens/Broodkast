@@ -77,6 +77,19 @@ p {
 	color: var(--text-muted);
 }
 
+/* Te animeren elementen: verborgen tot GSAP ze inschuift. Zonder JS of met minder beweging gewoon zichtbaar. */
+.js [data-reveal],
+.js [data-hero] {
+	visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.js [data-reveal],
+	.js [data-hero] {
+		visibility: visible;
+	}
+}
+
 .sr-only {
 	position: absolute;
 	width: 1px;

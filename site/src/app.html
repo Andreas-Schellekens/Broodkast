@@ -11,6 +11,14 @@
 			rel="stylesheet"
 			href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Inter+Tight:wght@400;500;600&display=swap"
 		/>
+		<script>
+			// Met JS verbergen we de te animeren elementen tot GSAP ze overneemt (zie global.css).
+			document.documentElement.classList.add('js');
+			// Vangnet: als het script faalt, wordt na 3 s alles zichtbaar. Wat GSAP al overnam, houdt zijn eigen stijl.
+			setTimeout(function () {
+				document.documentElement.classList.remove('js');
+			}, 3000);
+		</script>
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover">

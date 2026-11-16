@@ -7,8 +7,8 @@
 			titel: 'Bot',
 			links: [
 				{ href: INVITE_URL, label: 'Uitnodigen' },
-				{ href: '#integraties', label: 'Integraties' },
-				{ href: '#commandos', label: "Commando's" }
+				{ href: '/#integraties', label: 'Integraties' },
+				{ href: '/commandos', label: "Commando's" }
 			]
 		},
 		{

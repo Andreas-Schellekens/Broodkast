@@ -3,8 +3,8 @@
 	import InviteButton from './InviteButton.svelte';
 
 	const links = [
-		{ href: '#integraties', label: 'Integraties' },
-		{ href: '#commandos', label: "Commando's" },
+		{ href: '/#integraties', label: 'Integraties' },
+		{ href: '/commandos', label: "Commando's" },
 		{ href: '#footer', label: 'Contact' }
 	];
 </script>
