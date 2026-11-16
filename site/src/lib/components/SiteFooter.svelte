@@ -12,8 +12,11 @@
 			]
 		},
 		{
-			titel: 'Meer',
-			links: [{ href: 'https://schellekensdigital.be', label: 'schellekensdigital.be' }]
+			titel: 'Juridisch',
+			links: [
+				{ href: '/privacy', label: 'Privacybeleid' },
+				{ href: '/voorwaarden', label: 'Gebruiksvoorwaarden' }
+			]
 		}
 	];
 </script>
@@ -34,7 +37,10 @@
 		{/each}
 		<div class="onder">
 			<span>© {new Date().getFullYear()} Broodkast</span>
-			<span>broodkast.schellekensdigital.be</span>
+			<a class="sd" href="https://schellekensdigital.be">
+				<span>Gemaakt door</span>
+				<img src="/schellekens-digital-creme.svg" alt="Schellekens Digital" width="110" height="30" />
+			</a>
 		</div>
 	</div>
 </footer>
@@ -90,8 +96,34 @@
 		display: flex;
 		justify-content: space-between;
 		gap: 12px;
+		align-items: center;
 		flex-wrap: wrap;
 		font-size: 13px;
+	}
+	/* In de huisstijl van Schellekens Digital: bosgroen, crème, goud bij hover. */
+	.sd {
+		display: inline-flex;
+		align-items: center;
+		gap: 12px;
+		padding: 9px 14px;
+		background: #16291f;
+		border: 1px solid rgb(239 233 220 / 0.18);
+		border-radius: 4px;
+		color: #efe9dc;
+		text-decoration: none;
+		font-size: 10px;
+		font-weight: 500;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+		transition: border-color 0.2s;
+	}
+	.sd:hover {
+		border-color: #c2a36b;
+	}
+	.sd img {
+		display: block;
+		height: 26px;
+		width: auto;
 	}
 	@media (max-width: 760px) {
 		.raster {
