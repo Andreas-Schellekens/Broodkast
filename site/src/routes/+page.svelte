@@ -7,9 +7,6 @@
 	import ThermalHud from '#lib/components/ThermalHud.svelte';
 	import FeatureCard from '#lib/components/FeatureCard.svelte';
 	import CommandChip from '#lib/components/CommandChip.svelte';
-	import CommandDemo from '#lib/components/CommandDemo.svelte';
-	import KoeDemo from '#lib/components/KoeDemo.svelte';
-	import MuntDemo from '#lib/components/MuntDemo.svelte';
 	import CtaBand from '#lib/components/CtaBand.svelte';
 	import SiteFooter from '#lib/components/SiteFooter.svelte';
 
@@ -71,23 +68,14 @@
 
 <section id="commandos" class="sectie">
 	<div class="wrap stapel">
-		<div class="kop" data-reveal use:reveal={{ kinderen: true }}>
-			<h2 class="display">Voor tussendoor</h2>
-			<p>Werken ook in je DM's en privégroepen als je Broodkast aan je eigen account toevoegt. Probeer ze hier.</p>
-		</div>
-		<div class="cmds" data-reveal use:reveal={{ kinderen: true, stagger: 0.1 }}>
-			<CommandDemo naam="/koepraat" uitleg="Een koe zegt wat jij typt, in een tekstballon.">
-				<KoeDemo />
-			</CommandDemo>
-			<CommandDemo naam="/muntgooier" uitleg="Kop of munt, voor elke knoop die doorgehakt moet worden.">
-				<MuntDemo />
-			</CommandDemo>
-			<a class="alles" href="/commandos">
-				<span class="getal">{aantal}</span>
-				<span class="label">Alle commando's</span>
-				<span class="pijl" aria-hidden="true">→</span>
-			</a>
-		</div>
+		<a class="alles" href="/commandos" data-reveal use:reveal>
+			<span class="getal">{aantal}</span>
+			<span class="tekst">
+				<span class="label">Commando's</span>
+				<span class="uitleg">Meldingen, herinneringen, het weer, dobbelstenen en meer. Bekijk ze allemaal.</span>
+			</span>
+			<span class="pijl" aria-hidden="true">→</span>
+		</a>
 	</div>
 </section>
 
@@ -128,18 +116,13 @@
 		border-radius: var(--radius-md);
 		overflow: hidden;
 	}
-	.cmds {
-		display: grid;
-		grid-template-columns: 1.3fr 1fr 1fr;
-		gap: 16px;
-	}
 	.alles {
 		position: relative;
 		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		gap: 24px;
-		padding: 28px;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 20px 40px;
+		padding: 40px 44px;
 		border-radius: var(--radius-md);
 		background: var(--surface);
 		border: 1px solid var(--line);
@@ -151,7 +134,7 @@
 		content: '';
 		position: absolute;
 		inset: auto -30% -60% auto;
-		width: 90%;
+		width: 55%;
 		aspect-ratio: 1;
 		border-radius: 50%;
 		background: radial-gradient(closest-side, rgb(255 46 136 / 0.55), rgb(255 106 43 / 0.25), transparent);
@@ -167,30 +150,42 @@
 	.getal {
 		font-family: var(--font-display);
 		font-weight: 900;
-		font-size: 96px;
+		font-size: clamp(88px, 11vw, 160px);
 		line-height: 0.85;
 		color: var(--main);
 		font-variant-numeric: tabular-nums;
 	}
+	.tekst {
+		position: relative;
+		z-index: 1;
+		flex: 1 1 280px;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		min-width: 0;
+	}
 	.label {
 		font-family: var(--font-display);
 		font-weight: 800;
-		font-size: 32px;
+		font-size: clamp(36px, 4.4vw, 60px);
 		text-transform: uppercase;
 		line-height: 1;
+	}
+	.uitleg {
+		max-width: 44ch;
+		color: var(--text-muted);
 	}
 	.pijl {
 		position: relative;
 		z-index: 1;
-		font-size: 28px;
+		font-size: 44px;
 		transition: transform 0.3s;
 	}
 	.alles:hover .pijl {
 		transform: translateX(8px);
 	}
 	@media (max-width: 900px) {
-		.raster3,
-		.cmds {
+		.raster3 {
 			grid-template-columns: minmax(0, 1fr);
 		}
 	}
