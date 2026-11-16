@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<title>Broodkast homepage</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Sora:wght@400;600;700&amp;display=swap">
+<style>
+body{margin:0;background:#030B3F}
+a{color:#FFFFFF}a:hover{color:#C9CCFF}
+*{box-sizing:border-box}
+.bk-wrap{max-width:1200px;margin:0 auto;padding-left:32px;padding-right:32px}
+.bk-hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:48px;align-items:center}
+.bk-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px}
+.bk-2{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:20px}
+.bk-foot{display:grid;grid-template-columns:minmax(0,1.6fr) repeat(2,minmax(0,1fr));gap:32px}
+.bk-nav-links{display:flex;gap:32px}
+.bk-btn{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font:600 15px/1 Inter,system-ui,sans-serif;padding:14px 20px;border-radius:8px;transition:background .15s,border-color .15s}
+.bk-btn-main{background:#5B5CF0;color:#FFFFFF}
+.bk-btn-main:hover{background:#4A4BDB;color:#FFFFFF}
+.bk-btn-ghost{border:1px solid rgba(255,255,255,.22);color:#FFFFFF}
+.bk-btn-ghost:hover{border-color:#FFFFFF;color:#FFFFFF}
+.bk-btn:focus-visible,.bk-coin:focus-visible,.bk-input:focus-visible{outline:2px solid #D9913F;outline-offset:3px}
+.bk-coin{transition:transform .5s cubic-bezier(.3,1.4,.5,1)}
+.bk-input::placeholder{color:#7D83B3}
+@media (max-width:900px){
+  .bk-hero,.bk-2{grid-template-columns:minmax(0,1fr)}
+  .bk-3{grid-template-columns:minmax(0,1fr)}
+  .bk-foot{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bk-foot>div:first-child{grid-column:1/-1}
+  .bk-nav-links{display:none}
+  .bk-stip{width:120%!important;opacity:.55}
+}
+@media (max-width:520px){
+  .bk-wrap{padding-left:16px;padding-right:16px}
+  .bk-nav-btn{padding:10px 12px!important;font-size:13px!important}
+}
+@media (prefers-reduced-motion:reduce){.bk-coin{transition:none}}
+</style>
+</helmet>
+<div style="font-family: Inter, system-ui, -apple-system, 'Segoe UI', sans-serif; color: #FFFFFF; background: #030B3F; font-size: 17px; line-height: 1.55">
+
+  <!-- NAV -->
+  <header style="position: relative; z-index: 2; border-bottom: 1px solid rgba(255,255,255,.08)">
+    <div class="bk-wrap" style="display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 76px">
+      <a href="#top" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #FFFFFF">
+        <svg width="44" height="35" viewBox="0 0 104 82" aria-hidden="true">
+          <path d="M80 20L88 6" stroke="#E9EBF8" stroke-width="2.8" stroke-linecap="round"/>
+          <circle cx="89" cy="5" r="3.8" fill="#5B5CF0"/>
+          <path d="M95 1.5Q98.5 5 95 8.5" stroke="#E9EBF8" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          <rect x="30" y="19" width="62" height="6" rx="2" fill="#E6A65C"/>
+          <path d="M58 78V52C58 36 68 24 84 24H92V78Z" fill="#B06D2A"/>
+          <path d="M8 78V52C8 36 18 24 34 24H84C68 24 58 36 58 52V78Z" fill="#D9913F"/>
+          <path d="M9.2 42.9H59.2M12.5 35.2H62.5M17.9 29.3H67.9M8 52H58M8 60H58M8 68H58" stroke="#B06D2A" stroke-width="1.5"/>
+          <rect x="26" y="70.5" width="18" height="3.6" rx="1.6" fill="#8E561F"/>
+        </svg>
+        <span style="font-family: Sora, Inter, sans-serif; font-weight: 600; font-size: 22px; letter-spacing: -0.03em">broodkast</span>
+      </a>
+      <nav class="bk-nav-links" style="font-size: 15px; font-weight: 500">
+        <a href="#integraties" style="text-decoration: none; color: #B9BEE3">Integraties</a>
+        <a href="#commandos" style="text-decoration: none; color: #B9BEE3">Commando's</a>
+        <a href="#footer" style="text-decoration: none; color: #B9BEE3">Contact</a>
+      </nav>
+      <a class="bk-btn bk-btn-main bk-nav-btn" href="https://discord.com/oauth2/authorize?client_id=1377039869645295656" style="background: {{main}}">Voeg toe aan Discord</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="top" style="position: relative; overflow: hidden">
+    <sc-if value="{{stippel}}" hint-placeholder-val="{{ true }}">
+      <img class="bk-stip" src="/_blob/c241ed4fe8aa1e235a2ccf458ad4abe0" alt="" aria-hidden="true" style="position: absolute; right: 0; top: 0; width: 78%; height: 100%; object-fit: cover; object-position: left center; pointer-events: none">
+    </sc-if>
+    <div class="bk-wrap" style="position: relative; padding-top: 104px; padding-bottom: 120px">
+      <div class="bk-hero">
+        <div style="display: flex; flex-direction: column; gap: 28px; min-width: 0">
+          <div style="display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #B9BEE3">
+            <span style="width: 8px; height: 8px; border-radius: 50%; background: #D9913F"></span>
+            Discord-bot · in het Nederlands
+          </div>
+          <h1 style="margin: 0; font-family: Sora, Inter, sans-serif; font-weight: 600; font-size: clamp(42px, 5.6vw, 76px); line-height: 1.02; letter-spacing: -0.035em; text-wrap: balance">Alles wat je volgt, vers in je kanaal.</h1>
+          <p style="margin: 0; max-width: 46ch; font-size: 19px; color: #C3C7EA">Broodkast zet nieuwe video's, posts, releases, Twitch-streams en berichten van je eigen diensten in het Discord-kanaal dat jij kiest. Instellen doe je met één commando.</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 12px">
+            <a class="bk-btn bk-btn-main" href="https://discord.com/oauth2/authorize?client_id=1377039869645295656" style="background: {{main}}">Voeg toe aan Discord</a>
+            <a class="bk-btn bk-btn-ghost" href="#integraties">Bekijk wat hij doet</a>
+          </div>
+        </div>
+
+        <div aria-label="Voorbeelden van meldingen" style="display: flex; flex-direction: column; gap: 12px; min-width: 0; max-width: 440px; justify-self: end; width: 100%">
+          <div style="background: rgba(3,11,63,.78); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,.14); border-radius: 12px; padding: 16px 18px; display: flex; gap: 14px; align-items: flex-start">
+            <div style="flex: none; width: 36px; height: 36px; border-radius: 8px; background: rgba(91,92,240,.22); display: grid; place-items: center">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9CCFF" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 19a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/><path d="M4 11a9 9 0 0 1 9 9M4 4a16 16 0 0 1 16 16"/></svg>
+            </div>
+            <div style="min-width: 0">
+              <div style="font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #9AA0C8">Feed · YouTube</div>
+              <div style="font-weight: 600; font-size: 16px; line-height: 1.35; margin-top: 2px">Nieuwe video: zuurdesem in 24 uur</div>
+              <div style="font-size: 13px; color: #9AA0C8; margin-top: 4px">#video's · 19:40</div>
+            </div>
+          </div>
+          <div style="background: #FFFFFF; color: #030B3F; border-radius: 12px; padding: 16px 18px; display: flex; gap: 14px; align-items: flex-start; box-shadow: 0 24px 48px rgba(1,6,31,.45); transform: translateX(-28px)">
+            <div style="flex: none; width: 36px; height: 36px; border-radius: 8px; background: #5B5CF0; display: grid; place-items: center">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 5 11 7-11 7Z"/></svg>
+            </div>
+            <div style="min-width: 0">
+              <div style="font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #4A5080; display: flex; align-items: center; gap: 8px">Twitch · live <span style="width: 7px; height: 7px; border-radius: 50%; background: #5B5CF0"></span></div>
+              <div style="font-weight: 600; font-size: 16px; line-height: 1.35; margin-top: 2px">bakkerbram is live: nachtploeg, deel 3</div>
+              <div style="font-size: 13px; color: #4A5080; margin-top: 4px">@streamkijkers · #live · 20:14</div>
+            </div>
+          </div>
+          <div style="background: rgba(3,11,63,.78); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,.14); border-radius: 12px; padding: 16px 18px; display: flex; gap: 14px; align-items: flex-start">
+            <div style="flex: none; width: 36px; height: 36px; border-radius: 8px; background: rgba(217,145,63,.2); display: grid; place-items: center">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E6A65C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>
+            </div>
+            <div style="min-width: 0">
+              <div style="font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #9AA0C8">Webhook · Server-monitor</div>
+              <div style="font-weight: 600; font-size: 16px; line-height: 1.35; margin-top: 2px">Back-up van de server klaar</div>
+              <div style="font-size: 13px; color: #9AA0C8; margin-top: 4px">#beheer · 20:31</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRONNEN -->
+  <section style="border-top: 1px solid rgba(255,255,255,.08); border-bottom: 1px solid rgba(255,255,255,.08); background: #01061F">
+    <div class="bk-wrap" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px; padding-top: 28px; padding-bottom: 28px">
+      <span style="font-size: 13px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #9AA0C8">Werkt met</span>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px 36px; font-family: Sora, Inter, sans-serif; font-weight: 600; font-size: 18px; letter-spacing: -0.01em; color: #E9EBF8">
+        <span>RSS &amp; Atom</span><span>YouTube</span><span>Reddit</span><span>GitHub</span><span>Twitch</span><span>Webhooks</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTEGRATIES (licht) -->
+  <section id="integraties" style="background: #EEF0FA; color: #030B3F">
+    <div class="bk-wrap" style="padding-top: 112px; padding-bottom: 112px; display: flex; flex-direction: column; gap: 56px">
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
+        <h2 style="margin: 0; font-family: Sora, Inter, sans-serif; font-weight: 600; font-size: clamp(32px, 4vw, 52px); line-height: 1.05; letter-spacing: -0.03em; max-width: 14ch; text-wrap: balance">Drie bronnen, één commando.</h2>
+        <p style="margin: 0; max-width: 44ch; color: #4A5080">Kies een kanaal en, als je wilt, een rol die gepingd wordt. <span style="font-weight: 600; color: #030B3F; background: #FFFFFF; border: 1px solid #D5D8EE; border-radius: 6px; padding: 1px 8px; white-space: nowrap">/volglijst</span> toont wat je server volgt, tot 50 bronnen. <span style="font-weight: 600; color: #030B3F; background: #FFFFFF; border: 1px solid #D5D8EE; border-radius: 6px; padding: 1px 8px; white-space: nowrap">/ontvolg</span> haalt er een weg.</p>
+      </div>
+      <div class="bk-3" style="background: #D5D8EE; border: 1px solid #D5D8EE; border-radius: 14px; overflow: hidden">
+        <article style="background: #FFFFFF; padding: 32px; display: flex; flex-direction: column; gap: 16px; min-width: 0">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px">
+            <h3 style="margin: 0; font-family: Sora, Inter, sans-serif; font-weight: 600; font-size: 24px; letter-spacing: -0.02em">Feeds</h3>
+            <span style="font-family: Sora, Inter, sans-serif; font-weight: 600; font-size: 15px; color: #5B5CF0; font-variant-numeric: tabular-nums">elke 10 min</span>
+          </div>
+          <p style="margin: 0; color: #4A5080">Elke RSS- of Atom-feed. Nieuwe items komen binnen met titel, link en afbeelding. Oude berichten worden nooit opnieuw gepost.</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 6px; font-size: 13px; font-weight: 500">
+            <span style="background: #EEF0FA; border-radius: 999px; padding: 4px 10px">YouTube</span><span style="background: #EEF0FA; border-radius: 999px; padding: 4px 10px">Reddit</span><span style="background: #EEF0FA; border-radius: 999px; padding: 4px 10px">GitHub-releases</span><span style="background: #EEF0FA; border-radius: 999px; padding: 4px 10px">blogs</span>
+          </div>
+          <div style="margin-top: auto; padding-top: 16px; border-top: 1px solid #E3E5F3; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 14px">
+            <span style="font-weight: 600">/volg rss</span><span style="color: #4A5080">max. 5 items per ronde</span>
+          </div>
+        </article>
+        <article style="background: #FFFFFF; padding: 32px; display: flex; flex-direction: column; gap: 16px; min-width: 0">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px">
+            <h3 style="margin: 0; font-family: Sora, Inter, sans-serif; font-weight: 600; font-size: 24px; letter-spacing: -0.02em">Twitch</h3>
+            <span style="font-family: Sora, Inter, sans-serif; font-weight: 600; font-size: 15px; color: #5B5CF0; font-variant-numeric: tabular-nums">elke 2 min</span>
+          </div>
+          <p style="margin: 0; color: #4A5080">Een melding zodra een streamer live gaat, met titel en spel. Eén melding per stream, ook als Twitch even hapert.</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 6px; font-size: 13px; font-weight: 500">
+            <span style="background: #EEF0FA; border-radius: 999px; padding: 4px 10px">live-melding</span><span style="background: #EEF0FA; border-radius: 999px; padding: 4px 10px">rol-ping</span>
+          </div>
+          <div style="margin-top: auto; padding-top: 16px; border-top: 1px solid #E3E5F3; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 14px">
+            <span style="font-weight: 600">/volg twitch</span><span style="color: #4A5080">per streamer</span>
+          </div>
+        </article>
+        <article style="background: #FFFFFF; padding: 32px; display: flex; flex-direction: column; gap: 16px; min-width: 0">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px">
+            <h3 style="margin: 0; font-family: Sora, Inter, sans-serif; font-weight: 600; font-size: 24px; letter-spacing: -0.02em">Webhooks</h3>
+            <span style="font-family: Sora, Inter, sans-serif; font-weight: 600; font-size: 15px; color: #5B5CF0">meteen</span>
+          </div>
+          <p style="margin: 0; color: #4A5080">Een geheime URL voor je eigen diensten. Wat een server, script of formulier daarheen stuurt, staat direct in je kanaal.</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 6px; font-size: 13px; font-weight: 500">
+            <span style="background: #EEF0FA; border-radius: 999px; padding: 4px 10px">titel</span><span style="background: #EEF0FA; border-radius: 999px; padding: 4px 10px">tekst</span><span style="background: #EEF0FA; border-radius: 999px; padding: 4px 10px">link</span><span style="background: #EEF0FA; border-radius: 999px; padding: 4px 10px">afbeelding</span><span style="background: #EEF0FA; border-radius: 999px; padding: 4px 10px">kleur</span>
+          </div>
+          <div style="margin-top: auto; padding-top: 16px; border-top: 1px solid #E3E5F3; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 14px">
+            <span style="font-weight: 600">/volg webhook</span><span style="color: #4A5080">1 bericht per 2 s</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMANDO'S -->
+  <section id="commandos">
+    <div class="bk-wrap" style="padding-top: 112px; padding-bottom: 112px; display: flex; flex-direction: column; gap: 48px">
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
+        <h2 style="margin: 0; font-family: Sora, Inter, sans-serif; font-weight: 600; font-size: clamp(32px, 4vw, 52px); line-height: 1.05; letter-spacing: -0.03em; max-width: 15ch; text-wrap: balance">En een paar dingen voor de lol.</h2>
+        <p style="margin: 0; max-width: 42ch; color: #B9BEE3">Werken ook in je DM's en privégroepen als je Broodkast aan je eigen account toevoegt. Probeer ze hier.</p>
+      </div>
+      <div class="bk-2">
+        <div style="border: 1px solid rgba(255,255,255,.14); border-radius: 14px; padding: 32px; display: flex; flex-direction: column; gap: 20px; min-width: 0">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap">
+            <h3 style="margin: 0; font-family: Sora, Inter, sans-serif; font-weight: 600; font-size: 24px; letter-spacing: -0.02em">/koepraat</h3>
+            <span style="font-size: 14px; color: #9AA0C8">een koe met een tekstballon</span>
+          </div>
+          <div style="display: flex; align-items: flex-end; gap: 16px; flex-wrap: wrap">
+            <svg width="96" height="88" viewBox="0 0 130 120" aria-hidden="true" style="flex: none">
+              <path d="M22 34Q4 30 6 16Q20 18 30 28M108 34Q126 30 124 16Q110 18 100 28" fill="#E9EBF8"/>
+              <path d="M40 22Q38 6 46 4M90 22Q92 6 84 4" fill="none" stroke="#D9913F" stroke-width="5" stroke-linecap="round"/>
+              <ellipse cx="65" cy="54" rx="42" ry="38" fill="#E9EBF8"/>
+              <path d="M34 34Q46 30 50 44Q40 52 32 46Z" fill="#030B3F"/>
+              <ellipse cx="65" cy="84" rx="30" ry="22" fill="#C9CCFF"/>
+              <ellipse cx="55" cy="84" rx="4" ry="6" fill="#030B3F"/><ellipse cx="75" cy="84" rx="4" ry="6" fill="#030B3F"/>
+              <circle cx="50" cy="54" r="5" fill="#030B3F"/><circle cx="80" cy="54" r="5" fill="#030B3F"/>
+            </svg>
+            <div aria-live="polite" style="flex: 1; min-width: 180px; margin-bottom: 52px; background: #FFFFFF; color: #030B3F; border-radius: 14px 14px 14px 4px; padding: 14px 18px; font-weight: 600; font-size: 18px; overflow-wrap: anywhere">{{ballon}}</div>
+          </div>
+          <form onSubmit="{{zeg}}" style="display: flex; gap: 10px; flex-wrap: wrap">
+            <label for="koetekst" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Wat moet de koe zeggen?</label>
+            <input id="koetekst" class="bk-input" value="{{invoer}}" onChange="{{typ}}" maxlength="80" autocomplete="off" placeholder="Wat moet de koe zeggen?" style="flex: 1; min-width: 0; font: 500 16px Inter, system-ui, sans-serif; color: #FFFFFF; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.18); border-radius: 8px; padding: 13px 14px">
+            <button type="submit" class="bk-btn bk-btn-main" style="border: 0; cursor: pointer; background: {{main}}">Laat haar praten</button>
+          </form>
+        </div>
+        <div style="display: grid; gap: 20px; min-width: 0">
+          <div style="border: 1px solid rgba(255,255,255,.14); border-radius: 14px; padding: 32px; display: flex; flex-direction: column; gap: 18px">
+            <h3 style="margin: 0; font-family: Sora, Inter, sans-serif; font-weight: 600; font-size: 24px; letter-spacing: -0.02em">/muntgooier</h3>
+            <div style="display: flex; align-items: center; gap: 18px">
+              <button type="button" class="bk-coin" onClick="{{gooi}}" aria-label="Gooi het muntje" style="flex: none; width: 64px; height: 64px; border-radius: 50%; border: 0; cursor: pointer; background: #D9913F; box-shadow: inset 0 0 0 5px rgba(255,255,255,.28); color: #030B3F; font-family: Sora, Inter, sans-serif; font-weight: 700; font-size: 24px; transform: rotateY({{draai}}deg)">{{muntLetter}}</button>
+              <div>
+                <div style="font-family: Sora, Inter, sans-serif; font-weight: 600; font-size: 26px; letter-spacing: -0.02em">{{uitkomst}}</div>
+                <div style="font-size: 14px; color: #9AA0C8">Tik op het muntje.</div>
+              </div>
+            </div>
+          </div>
+          <div style="border: 1px solid rgba(255,255,255,.14); border-radius: 14px; padding: 32px; display: flex; flex-direction: column; gap: 10px">
+            <h3 style="margin: 0; font-family: Sora, Inter, sans-serif; font-weight: 600; font-size: 24px; letter-spacing: -0.02em">/apod</h3>
+            <p style="margin: 0; color: #B9BEE3">De astronomiefoto van de dag van NASA, met uitleg erbij.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="position: relative; overflow: hidden; border-top: 1px solid rgba(255,255,255,.08)">
+    <sc-if value="{{stippel}}" hint-placeholder-val="{{ true }}">
+      <img src="/_blob/c241ed4fe8aa1e235a2ccf458ad4abe0" alt="" aria-hidden="true" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; object-position: right center; transform: scaleX(-1); opacity: .9; pointer-events: none">
+    </sc-if>
+    <div class="bk-wrap" style="position: relative; padding-top: 128px; padding-bottom: 128px; display: flex; flex-direction: column; align-items: flex-end; text-align: right; gap: 28px">
+      <h2 style="margin: 0; font-family: Sora, Inter, sans-serif; font-weight: 600; font-size: clamp(34px, 4.6vw, 60px); line-height: 1.04; letter-spacing: -0.035em; max-width: 13ch; text-wrap: balance">Zet de broodkast in je server.</h2>
+      <a class="bk-btn bk-btn-main" href="https://discord.com/oauth2/authorize?client_id=1377039869645295656" style="background: {{main}}">Voeg toe aan Discord</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="footer" style="background: #01061F; border-top: 1px solid rgba(255,255,255,.08); font-size: 15px; color: #9AA0C8">
+    <div class="bk-wrap bk-foot" style="padding-top: 56px; padding-bottom: 32px">
+      <div style="display: flex; flex-direction: column; gap: 14px">
+        <span style="font-family: Sora, Inter, sans-serif; font-weight: 600; font-size: 20px; letter-spacing: -0.03em; color: #FFFFFF">broodkast</span>
+        <p style="margin: 0; max-width: 34ch">De Nederlandstalige Discord-bot die uitzendt wat jij volgt.</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px">
+        <span style="font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #E9EBF8">Bot</span>
+        <a href="https://discord.com/oauth2/authorize?client_id=1377039869645295656" style="text-decoration: none; color: #9AA0C8">Uitnodigen</a>
+        <a href="#integraties" style="text-decoration: none; color: #9AA0C8">Integraties</a>
+        <a href="#commandos" style="text-decoration: none; color: #9AA0C8">Commando's</a>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px">
+        <span style="font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #E9EBF8">Meer</span>
+        <a href="https://schellekensdigital.be" style="text-decoration: none; color: #9AA0C8">schellekensdigital.be</a>
+        <a href="#top" style="text-decoration: none; color: #9AA0C8">Privacy</a>
+        <a href="#top" style="text-decoration: none; color: #9AA0C8">Voorwaarden</a>
+      </div>
+      <div style="grid-column: 1 / -1; border-top: 1px solid rgba(255,255,255,.08); padding-top: 20px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 13px">
+        <span>© 2026 Broodkast</span><span>broodkast.schellekensdigital.be</span>
+      </div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"main":{"editor":"color","default":"#5B5CF0","options":["#5B5CF0","#4A4BDB","#6E6FFF"]},"stippel":{"editor":"boolean","default":true},"$preview":{"width":1440,"height":3200}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { invoer: '', ballon: 'Boe. Er is een nieuwe video.', kop: true, draai: 0 };
+  }
+  renderVals() {
+    const s = this.state;
+    return {
+      main: this.props.main ?? '#5B5CF0',
+      stippel: this.props.stippel ?? true,
+      invoer: s.invoer,
+      ballon: s.ballon,
+      draai: s.draai,
+      muntLetter: s.kop ? 'K' : 'M',
+      uitkomst: s.kop ? 'Kop!' : 'Munt!',
+      typ: (e) => this.setState({ invoer: e.target.value }),
+      zeg: (e) => {
+        e.preventDefault();
+        const t = (this.state.invoer || '').trim();
+        this.setState({ ballon: t || 'Boe!' });
+      },
+      gooi: () => this.setState({ kop: Math.random() < 0.5, draai: this.state.draai + 720 })
+    };
+  }
+}
+</script>
+</body>
+</html>

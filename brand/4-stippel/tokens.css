@@ -1,0 +1,33 @@
+/* Broodkast · richting 4 Stippel. Donker thema, met één lichte sectie (Mist).
+   Fonts (Google): https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@400;600;700&display=swap
+   Stippel-achtergrond: stippel.webp (gegenereerd met stipple.py). */
+:root {
+  /* merk: precies drie */
+  --main: #5B5CF0;      /* Signaal */
+  --secondary: #030B3F; /* Nachtinkt */
+  --accent: #D9913F;    /* Beukenhout */
+  /* neutraal */
+  --bg: var(--secondary);
+  --bg-deep: #01061F;   /* Diep: footer, banden */
+  --surface: #0A1450;   /* app: panelen op donker */
+  --surface-light: #FFFFFF;
+  --mist: #EEF0FA;      /* lichte sectie */
+  --text: #FFFFFF;
+  --text-soft: #C3C7EA;
+  --text-muted: #9AA0C8; /* Nevel */
+  --text-on-light: #030B3F;
+  --text-muted-on-light: #4A5080;
+  --line: rgba(255, 255, 255, .14);
+  --line-light: #D5D8EE;
+  /* hout-tinten, alleen voor het logo */
+  --hout-licht: #E6A65C;
+  --hout-donker: #B06D2A;
+  --hout-greep: #8E561F;
+  /* typografie */
+  --font-display: "Sora", "Inter", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* vorm */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  color-scheme: dark;
+}
