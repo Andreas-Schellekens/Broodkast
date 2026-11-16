@@ -2,7 +2,7 @@
 
 Drie ontwerprichtingen voor `broodkast.schellekensdigital.be`, alle drie op één Claude Design-canvas:
 https://claude.ai/artifact/DswmBgp8N23AqyfjNZcAeq (privé). Elke richting heeft een homepage en een merkblad.
-Er is nog niet gekozen. De eerdere richtingen (Nachtzender, Omroepgids, Kruimel) zijn op verzoek geschrapt.
+**Gekozen: Thermal** (16-11-2026). De eerdere richtingen (Nachtzender, Omroepgids, Kruimel) zijn op verzoek geschrapt.
 
 | Richting | Sfeer | Main | Secondary | Accent | Fonts |
 |---|---|---|---|---|---|
@@ -25,7 +25,7 @@ Vaste regels:
 - Geen monospace, ook niet voor commando's.
 
 ## Embedkleur voor de bot (voor de backend-sessie)
-Nu is het `BROODKAST_KLEUR = 0xC8873A`. Per richting wordt het: Stippel `0x5B5CF0`, Fluted glass `0xEE8A3E`, Thermal `0xFF6A2B`.
+Gekozen: Thermal, dus `BROODKAST_KLEUR = 0xFF6A2B` (Gloei). Ter info, de andere waarden waren: Stippel `0x5B5CF0`, Fluted glass `0xEE8A3E`, Thermal `0xFF6A2B`.
 
 ## Naar SvelteKit
 De echte site wordt SvelteKit met `adapter-cloudflare` in `site/`. Die wordt pas gebouwd als er een richting gekozen is.
