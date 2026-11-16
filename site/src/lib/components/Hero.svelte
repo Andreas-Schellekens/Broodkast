@@ -124,19 +124,20 @@
 		position: relative;
 		z-index: 2;
 		display: grid;
-		grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+		grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
 		gap: 48px;
 		align-items: center;
-		padding-block: 96px 140px;
+		/* Schaalt mee met de schermhoogte, zodat de hero op een laag scherm niet wordt afgesneden. */
+		padding-block: clamp(28px, 7vh, 96px) clamp(48px, 11vh, 140px);
 	}
 	.tekst {
 		display: flex;
 		flex-direction: column;
-		gap: 26px;
+		gap: clamp(16px, 3vh, 26px);
 		min-width: 0;
 	}
 	h1 {
-		font-size: clamp(56px, 8.4vw, 124px);
+		font-size: clamp(44px, min(7.2vw, 12vh), 124px);
 		line-height: 0.88;
 	}
 	.lead {

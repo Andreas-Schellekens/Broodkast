@@ -9,8 +9,16 @@
 	let temp: HTMLSpanElement;
 	const eind = 212.4;
 
+	/** Schaal het ontwerp (460 px hoog) mee met de schermhoogte: hoogstens 62 % ervan. */
+	function schaal_aan() {
+		hud.style.setProperty('--s', String(Math.min(1, (window.innerHeight * 0.62) / 460)));
+	}
+
 	onMount(() => {
-		if (minderBeweging()) return;
+		schaal_aan();
+		window.addEventListener('resize', schaal_aan);
+		const weg = () => window.removeEventListener('resize', schaal_aan);
+		if (minderBeweging()) return weg;
 		const { gsap } = motion();
 
 		const ctx = gsap.context(() => {
@@ -42,12 +50,16 @@
 			);
 		}, hud);
 
-		return () => ctx.revert();
+		return () => {
+			weg();
+			ctx.revert();
+		};
 	});
 </script>
 
 <!-- Warmtecamera-overlay: temperatuurschaal, richtkruis en de gloeiende broodkast. Puur decoratief. -->
 <div class="hud" bind:this={hud} aria-hidden="true">
+	<div class="binnen">
 	<div class="schaal">
 		<div class="getallen">
 			{#each schaal as t (t)}<span>{t}</span>{/each}
@@ -66,12 +78,24 @@
 		<span class="h"></span><span class="v"></span><span class="ring"></span><span class="ring vast"></span>
 		<span class="label"><span bind:this={temp}>{String(eind).replace('.', ',')}</span> °C <small>korst</small></span>
 	</div>
+	</div>
 </div>
 
 <style>
+	/* Het ontwerp is 460 px hoog; --s (gezet in het script) schaalt het mee op lage schermen. */
 	.hud {
+		--s: 1;
 		position: relative;
+		height: calc(460px * var(--s));
+	}
+	.binnen {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: calc(100% / var(--s));
 		height: 460px;
+		transform: scale(var(--s));
+		transform-origin: top left;
 	}
 	.schaal {
 		position: absolute;
