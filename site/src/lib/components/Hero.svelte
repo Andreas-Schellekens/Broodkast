@@ -43,14 +43,6 @@
 				delay: 2.2
 			});
 
-			// Bij scrollen zakt de gloed weg en vervaagt hij.
-			gsap.to(gloed, {
-				yPercent: 18,
-				opacity: 0.35,
-				ease: 'none',
-				scrollTrigger: { trigger: sectie, start: 'top top', end: 'bottom top', scrub: true }
-			});
-
 			// Muisparallax op apparaten met een muis.
 			if (window.matchMedia('(pointer: fine)').matches) {
 				const gx = gsap.quickTo(gloed, 'x', { duration: 1.2, ease: 'power3' });
