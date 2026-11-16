@@ -1,0 +1,18 @@
+[package]
+name = "broodkast"
+version = "0.1.0"
+description = "Broodkast: de Nederlandstalige Discord-bot"
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+anyhow = "1"
+dotenvy = "0.15"
+poise = "0.7.1"
+rand = "0.10"
+reqwest = { version = "0.13", default-features = false, features = ["json", "query", "rustls"] }
+serde = { version = "1", features = ["derive"] }
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "signal"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }

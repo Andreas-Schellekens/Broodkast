@@ -1,19 +1,34 @@
-# Broodkast
+# Broodkast 🍞📻
 
-Broodkast is a work-in-progress Discord bot designed to enhance your server with mostly fun and silly features. Stay tuned for updates as new capabilities are added!
+**Broodkast** is de vernederlandsing van *broadcast*: een Nederlandstalige Discord-bot met vooral leuke en gekke functies. Oorspronkelijk een JavaScript-leerproject, nu herbouwd in Rust.
 
-## Features
+## Commando's
 
-- 🤖 Easy to use commands
-- 🎉 Fun interactions
-- 🛠️ More features coming soon!
+| Commando | Wat het doet |
+|---|---|
+| `/muntgooier` | Draait een muntje om: kop of munt |
+| `/koepraat <tekst>` | Laat een koe je tekst zeggen |
+| `/apod` | NASA's astronomiefoto van de dag |
 
-## Getting Started
+Muziek komt in een latere fase terug.
 
-Invite it to your server with this link: (link komt hier)
+## Zelf draaien
 
-## Contributing
+1. Installeer [Rust](https://rustup.rs).
+2. Kopieer `.env.example` naar `.env` en vul `DISCORD_TOKEN` in.
+3. Start de bot:
 
-Contributions are welcome! Feel free to open issues or submit pull requests.
+   ```bash
+   cargo run
+   ```
 
----
+Met `DEV_GUILD_ID` ingevuld verschijnen de commando's meteen in je testserver; zonder worden ze globaal geregistreerd.
+
+## Uitnodigen
+
+Link komt hier, samen met de site.
+
+## Projectstructuur
+
+- `bot/`: de Discord-bot (Rust, [poise](https://github.com/serenity-rs/poise) + serenity)
+- `legacy/`: de oude JavaScript-versie, alleen ter referentie
