@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<title>Broodkast thermal</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&amp;family=Inter+Tight:wght@400;500;600&amp;display=swap">
+<style>
+body{margin:0;background:#0B0806}
+a{color:#FFFFFF}a:hover{color:#FF6A2B}
+*{box-sizing:border-box}
+.th-wrap{max-width:1200px;margin:0 auto;padding-left:32px;padding-right:32px}
+.th-hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:48px;align-items:start}
+.th-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px}
+.th-cmds{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.th-foot{display:grid;grid-template-columns:minmax(0,1.6fr) repeat(2,minmax(0,1fr));gap:32px}
+.th-nav-links{display:flex;gap:32px}
+.th-btn{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font:600 15px/1 'Inter Tight',system-ui,sans-serif;padding:15px 22px;border-radius:6px;transition:filter .15s,border-color .15s}
+.th-btn-main{background:#FF6A2B;color:#0B0806}
+.th-btn-main:hover{filter:brightness(1.12);color:#0B0806}
+.th-btn-ghost{border:1px solid rgba(255,255,255,.28);color:#FFFFFF}
+.th-btn-ghost:hover{border-color:#FFFFFF;color:#FFFFFF}
+.th-btn:focus-visible{outline:2px solid #FF2E88;outline-offset:3px}
+.th-hot{background:linear-gradient(90deg,#FF2E88,#FF6A2B 55%,#FFD45A);-webkit-background-clip:text;background-clip:text;color:transparent}
+@media (max-width:900px){
+  .th-hero,.th-3,.th-cmds{grid-template-columns:minmax(0,1fr)}
+  .th-foot{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .th-foot>div:first-child{grid-column:1/-1}
+  .th-nav-links,.th-hud{display:none}
+}
+@media (max-width:520px){
+  .th-wrap{padding-left:16px;padding-right:16px}
+  .th-nav-btn{padding:11px 14px!important;font-size:13px!important}
+}
+</style>
+</helmet>
+<div style="font-family: 'Inter Tight', system-ui, -apple-system, 'Segoe UI', sans-serif; color: #FFFFFF; background: #0B0806; font-size: 17px; line-height: 1.55">
+
+  <section id="top" style="position: relative; overflow: hidden">
+    <img src="/_blob/e98be736b2d32cddb38fabe071aac441" alt="" aria-hidden="true" style="position: absolute; right: -8%; bottom: -12%; width: 92%; height: 118%; object-fit: cover; object-position: left bottom; transform: scaleX(-1); pointer-events: none">
+
+    <header style="position: relative">
+      <div class="th-wrap" style="display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 84px">
+        <a href="#top" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #FFFFFF">
+          <svg width="44" height="35" viewBox="0 0 104 82" aria-hidden="true">
+            <defs><radialGradient id="thNav" cx=".35" cy=".75" r=".9"><stop offset="0" stop-color="#FFD45A"/><stop offset=".35" stop-color="#FF6A2B"/><stop offset=".7" stop-color="#FF2E88"/><stop offset="1" stop-color="#7A2CF0"/></radialGradient></defs>
+            <path d="M80 20L88 6" stroke="#FFFFFF" stroke-width="2.8" stroke-linecap="round"/>
+            <circle cx="89" cy="5" r="3.8" fill="#FF2E88"/>
+            <rect x="30" y="19" width="62" height="6" rx="2" fill="#FF2E88"/>
+            <path d="M58 78V52C58 36 68 24 84 24H92V78Z" fill="#B0206A"/>
+            <path d="M8 78V52C8 36 18 24 34 24H84C68 24 58 36 58 52V78Z" fill="url(#thNav)"/>
+            <path d="M9.2 42.9H59.2M12.5 35.2H62.5M17.9 29.3H67.9M8 52H58M8 60H58M8 68H58" stroke="#0B0806" stroke-opacity=".28" stroke-width="1.4"/>
+          </svg>
+          <span style="font-family: 'Big Shoulders Display', 'Inter Tight', sans-serif; font-weight: 800; font-size: 28px; letter-spacing: .01em; text-transform: uppercase">Broodkast</span>
+        </a>
+        <nav class="th-nav-links" style="font-size: 15px; font-weight: 500">
+          <a href="#integraties" style="text-decoration: none">Integraties</a>
+          <a href="#commandos" style="text-decoration: none">Commando's</a>
+          <a href="#footer" style="text-decoration: none">Contact</a>
+        </nav>
+        <a class="th-btn th-btn-main th-nav-btn" href="https://discord.com/oauth2/authorize?client_id=1377039869645295656">Voeg toe aan Discord</a>
+      </div>
+    </header>
+
+    <div class="th-wrap" style="position: relative; padding-top: 96px; padding-bottom: 140px">
+      <div class="th-hero">
+        <div style="display: flex; flex-direction: column; gap: 26px; min-width: 0">
+          <div style="display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #B3ABA5"><span style="width: 8px; height: 8px; border-radius: 50%; background: #FF2E88"></span>Discord-bot · in het Nederlands</div>
+          <h1 style="margin: 0; font-family: 'Big Shoulders Display', 'Inter Tight', sans-serif; font-weight: 900; font-size: clamp(56px, 8.4vw, 124px); line-height: .88; letter-spacing: -0.005em; text-transform: uppercase; text-wrap: balance">Vers uit de oven. <span class="th-hot">Recht in je kanaal.</span></h1>
+          <p style="margin: 0; max-width: 42ch; font-size: 19px; color: #D9D2CD">Broodkast zet nieuwe video's, posts, releases, Twitch-streams en berichten van je eigen diensten in het Discord-kanaal dat jij kiest, terwijl ze nog warm zijn.</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 12px">
+            <a class="th-btn th-btn-main" href="https://discord.com/oauth2/authorize?client_id=1377039869645295656">Voeg toe aan Discord</a>
+            <a class="th-btn th-btn-ghost" href="#integraties">Bekijk wat hij doet</a>
+          </div>
+        </div>
+
+        <div class="th-hud" aria-hidden="true" style="position: relative; height: 460px">
+          <div style="position: absolute; right: 0; top: 10px; display: flex; gap: 10px; align-items: stretch; height: 300px">
+            <div style="display: flex; flex-direction: column; justify-content: space-between; text-align: right; font-family: 'Big Shoulders Display', sans-serif; font-weight: 600; font-size: 15px; color: #FFFFFF; font-variant-numeric: tabular-nums">
+              <span>230°</span><span>160°</span><span>90°</span><span>20°</span>
+            </div>
+            <div style="width: 12px; border-radius: 3px; background: linear-gradient(180deg, #FFF3C4, #FFD45A 12%, #FFA23A 30%, #FF5A3C 48%, #F02D8C 66%, #8C3CF2 84%, #4A63FF)"></div>
+          </div>
+          <div style="position: absolute; left: 30%; top: 52%">
+            <div style="position: absolute; left: -22px; top: 0; width: 44px; height: 1px; background: #FFFFFF"></div>
+            <div style="position: absolute; left: 0; top: -22px; width: 1px; height: 44px; background: #FFFFFF"></div>
+            <div style="position: absolute; left: -9px; top: -9px; width: 18px; height: 18px; border: 1px solid #FFFFFF; border-radius: 50%"></div>
+            <div style="position: absolute; left: 24px; top: -44px; white-space: nowrap; background: rgba(11,8,6,.72); border: 1px solid rgba(255,255,255,.22); border-radius: 4px; padding: 6px 10px; font-family: 'Big Shoulders Display', sans-serif; font-weight: 800; font-size: 22px; line-height: 1; font-variant-numeric: tabular-nums">212,4 °C <span style="font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: 12px; color: #D9D2CD; margin-left: 4px">korst</span></div>
+          </div>
+          <div style="position: absolute; left: 0; bottom: 0; right: 40px; display: flex; flex-direction: column; gap: 10px">
+            <div style="background: rgba(11,8,6,.74); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,.16); border-radius: 8px; padding: 14px 16px">
+              <div style="font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #FF6A2B">Twitch · nu live</div>
+              <div style="font-weight: 600; font-size: 16px; margin-top: 2px">bakkerbram is live: nachtploeg, deel 3</div>
+            </div>
+            <div style="background: rgba(11,8,6,.74); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,.16); border-radius: 8px; padding: 14px 16px">
+              <div style="font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #FF7AB0">Feed · YouTube</div>
+              <div style="font-weight: 600; font-size: 16px; margin-top: 2px">Nieuwe video: zuurdesem in 24 uur</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTEGRATIES -->
+  <section id="integraties" style="background: #0B0806; border-top: 1px solid rgba(255,255,255,.08)">
+    <div class="th-wrap" style="padding-top: 112px; padding-bottom: 112px; display: flex; flex-direction: column; gap: 52px">
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
+        <h2 style="margin: 0; font-family: 'Big Shoulders Display', 'Inter Tight', sans-serif; font-weight: 900; font-size: clamp(44px, 5.6vw, 80px); line-height: .9; text-transform: uppercase; max-width: 12ch; text-wrap: balance">Drie bronnen. Altijd warm.</h2>
+        <p style="margin: 0; max-width: 44ch; color: #B3ABA5">Kies een kanaal en, als je wilt, een rol om te pingen. <b style="color: #FFFFFF; font-weight: 600">/volglijst</b> toont wat je server volgt, tot 50 bronnen. <b style="color: #FFFFFF; font-weight: 600">/ontvolg</b> haalt er een weg.</p>
+      </div>
+      <div class="th-3" style="background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.12); border-radius: 10px; overflow: hidden">
+        <article style="background: #17120F; padding: 32px; display: flex; flex-direction: column; gap: 14px; min-width: 0">
+          <div style="font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #B3ABA5">Controle elke</div>
+          <div class="th-hot" style="font-family: 'Big Shoulders Display', sans-serif; font-weight: 900; font-size: 84px; line-height: .85; font-variant-numeric: tabular-nums">10 MIN</div>
+          <h3 style="margin: 8px 0 0; font-size: 22px; font-weight: 600">Feeds</h3>
+          <p style="margin: 0; color: #CFC7C1">Elke RSS- of Atom-feed: YouTube-kanalen, subreddits, GitHub-releases, blogs. Oude berichten worden nooit opnieuw gepost.</p>
+          <div style="margin-top: auto; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.1); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 14px"><b style="font-weight: 600">/volg rss</b><span style="color: #B3ABA5">max. 5 per ronde</span></div>
+        </article>
+        <article style="background: #17120F; padding: 32px; display: flex; flex-direction: column; gap: 14px; min-width: 0">
+          <div style="font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #B3ABA5">Controle elke</div>
+          <div class="th-hot" style="font-family: 'Big Shoulders Display', sans-serif; font-weight: 900; font-size: 84px; line-height: .85; font-variant-numeric: tabular-nums">2 MIN</div>
+          <h3 style="margin: 8px 0 0; font-size: 22px; font-weight: 600">Twitch</h3>
+          <p style="margin: 0; color: #CFC7C1">Een melding zodra een streamer live gaat, met titel, spel en eventueel een rol-ping. Eén melding per stream.</p>
+          <div style="margin-top: auto; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.1); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 14px"><b style="font-weight: 600">/volg twitch</b><span style="color: #B3ABA5">per streamer</span></div>
+        </article>
+        <article style="background: #17120F; padding: 32px; display: flex; flex-direction: column; gap: 14px; min-width: 0">
+          <div style="font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #B3ABA5">Vertraging</div>
+          <div class="th-hot" style="font-family: 'Big Shoulders Display', sans-serif; font-weight: 900; font-size: 84px; line-height: .85; font-variant-numeric: tabular-nums">0 SEC</div>
+          <h3 style="margin: 8px 0 0; font-size: 22px; font-weight: 600">Webhooks</h3>
+          <p style="margin: 0; color: #CFC7C1">Een geheime URL voor je eigen diensten. Titel, tekst, link, afbeelding en kleur komen meteen in je kanaal.</p>
+          <div style="margin-top: auto; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.1); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 14px"><b style="font-weight: 600">/volg webhook</b><span style="color: #B3ABA5">1 bericht per 2 s</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMANDO'S -->
+  <section id="commandos" style="border-top: 1px solid rgba(255,255,255,.08)">
+    <div class="th-wrap" style="padding-top: 104px; padding-bottom: 104px; display: flex; flex-direction: column; gap: 44px">
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
+        <h2 style="margin: 0; font-family: 'Big Shoulders Display', 'Inter Tight', sans-serif; font-weight: 900; font-size: clamp(44px, 5.6vw, 80px); line-height: .9; text-transform: uppercase; max-width: 13ch; text-wrap: balance">Voor tussendoor</h2>
+        <p style="margin: 0; max-width: 40ch; color: #B3ABA5">Werken ook in je DM's en privégroepen als je Broodkast aan je eigen account toevoegt.</p>
+      </div>
+      <div class="th-cmds">
+        <div style="border: 1px solid rgba(255,255,255,.14); border-radius: 10px; padding: 28px; display: flex; flex-direction: column; gap: 12px; min-width: 0">
+          <h3 style="margin: 0; font-family: 'Big Shoulders Display', sans-serif; font-weight: 800; font-size: 32px; text-transform: uppercase; color: #FF6A2B">/koepraat</h3>
+          <p style="margin: 0; color: #CFC7C1">Een koe zegt wat jij typt, in een tekstballon.</p>
+          <div style="align-self: flex-start; background: #FFFFFF; color: #0B0806; border-radius: 12px 12px 12px 3px; padding: 10px 14px; font-weight: 600">Boe. Er is een nieuwe video.</div>
+        </div>
+        <div style="border: 1px solid rgba(255,255,255,.14); border-radius: 10px; padding: 28px; display: flex; flex-direction: column; gap: 12px; min-width: 0">
+          <h3 style="margin: 0; font-family: 'Big Shoulders Display', sans-serif; font-weight: 800; font-size: 32px; text-transform: uppercase; color: #FF6A2B">/muntgooier</h3>
+          <p style="margin: 0; color: #CFC7C1">Kop of munt, voor elke knoop die doorgehakt moet worden.</p>
+          <div style="display: flex; align-items: center; gap: 12px; font-family: 'Big Shoulders Display', sans-serif; font-weight: 800; font-size: 26px"><span style="width: 44px; height: 44px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #FFD45A, #FF6A2B 60%, #FF2E88); color: #0B0806; display: grid; place-items: center; font-size: 22px">K</span>KOP!</div>
+        </div>
+        <div style="border: 1px solid rgba(255,255,255,.14); border-radius: 10px; padding: 28px; display: flex; flex-direction: column; gap: 12px; min-width: 0">
+          <h3 style="margin: 0; font-family: 'Big Shoulders Display', sans-serif; font-weight: 800; font-size: 32px; text-transform: uppercase; color: #FF6A2B">/apod</h3>
+          <p style="margin: 0; color: #CFC7C1">De astronomiefoto van de dag van NASA, met uitleg erbij.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="position: relative; overflow: hidden; border-top: 1px solid rgba(255,255,255,.08)">
+    <img src="/_blob/e98be736b2d32cddb38fabe071aac441" alt="" aria-hidden="true" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; object-position: left bottom; pointer-events: none">
+    <div class="th-wrap" style="position: relative; padding-top: 140px; padding-bottom: 140px; display: flex; flex-direction: column; align-items: flex-end; text-align: right; gap: 28px">
+      <h2 style="margin: 0; font-family: 'Big Shoulders Display', 'Inter Tight', sans-serif; font-weight: 900; font-size: clamp(48px, 6vw, 92px); line-height: .88; text-transform: uppercase; max-width: 11ch; text-wrap: balance">Zet de broodkast in je server</h2>
+      <a class="th-btn th-btn-main" href="https://discord.com/oauth2/authorize?client_id=1377039869645295656" style="background: #0B0806; color: #FFFFFF">Voeg toe aan Discord</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="footer" style="background: #0B0806; border-top: 1px solid rgba(255,255,255,.08); font-size: 15px; color: #B3ABA5">
+    <div class="th-wrap th-foot" style="padding-top: 56px; padding-bottom: 32px">
+      <div style="display: flex; flex-direction: column; gap: 14px">
+        <span style="font-family: 'Big Shoulders Display', sans-serif; font-weight: 800; font-size: 28px; text-transform: uppercase; color: #FFFFFF">Broodkast</span>
+        <p style="margin: 0; max-width: 34ch">De Nederlandstalige Discord-bot die uitzendt wat jij volgt.</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px">
+        <span style="font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #FFFFFF">Bot</span>
+        <a href="https://discord.com/oauth2/authorize?client_id=1377039869645295656" style="text-decoration: none; color: #B3ABA5">Uitnodigen</a>
+        <a href="#integraties" style="text-decoration: none; color: #B3ABA5">Integraties</a>
+        <a href="#commandos" style="text-decoration: none; color: #B3ABA5">Commando's</a>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px">
+        <span style="font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #FFFFFF">Meer</span>
+        <a href="https://schellekensdigital.be" style="text-decoration: none; color: #B3ABA5">schellekensdigital.be</a>
+        <a href="#top" style="text-decoration: none; color: #B3ABA5">Privacy</a>
+        <a href="#top" style="text-decoration: none; color: #B3ABA5">Voorwaarden</a>
+      </div>
+      <div style="grid-column: 1 / -1; border-top: 1px solid rgba(255,255,255,.08); padding-top: 20px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 13px">
+        <span>© 2026 Broodkast</span><span>broodkast.schellekensdigital.be</span>
+      </div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3000}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<title>Broodkast fluted glass</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&amp;family=Syne:wght@600;700;800&amp;display=swap">
+<style>
+body{margin:0;background:#120A08}
+a{color:#F5E7DC}a:hover{color:#EE8A3E}
+*{box-sizing:border-box}
+.fl-wrap{max-width:1200px;margin:0 auto;padding-left:32px;padding-right:32px}
+.fl-hero{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:48px;align-items:end}
+.fl-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.fl-cmds{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.fl-foot{display:grid;grid-template-columns:minmax(0,1.6fr) repeat(2,minmax(0,1fr));gap:32px}
+.fl-nav-links{display:flex;gap:32px}
+.fl-btn{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font:600 15px/1 'Hanken Grotesk',system-ui,sans-serif;padding:15px 22px;border-radius:999px;transition:background .15s,border-color .15s}
+.fl-btn-main{background:#EE8A3E;color:#120A08}
+.fl-btn-main:hover{background:#F6A263;color:#120A08}
+.fl-btn-ghost{border:1px solid rgba(245,231,220,.3);color:#F5E7DC;background:rgba(18,10,8,.25);backdrop-filter:blur(8px)}
+.fl-btn-ghost:hover{border-color:#F5E7DC;color:#F5E7DC}
+.fl-btn:focus-visible{outline:2px solid #F5E7DC;outline-offset:3px}
+.fl-glass{background:linear-gradient(90deg,rgba(255,255,255,.07) 0 1px,transparent 1px) 0 0/14px 100%,rgba(18,10,8,.42);backdrop-filter:blur(14px) saturate(1.2);border:1px solid rgba(245,231,220,.16)}
+.fl-ribbel{background:repeating-linear-gradient(90deg,rgba(245,231,220,.10) 0 1px,transparent 1px 22px)}
+@media (max-width:900px){
+  .fl-hero,.fl-3,.fl-cmds{grid-template-columns:minmax(0,1fr)}
+  .fl-foot{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .fl-foot>div:first-child{grid-column:1/-1}
+  .fl-nav-links{display:none}
+}
+@media (max-width:520px){
+  .fl-wrap{padding-left:16px;padding-right:16px}
+  .fl-nav-btn{padding:11px 14px!important;font-size:13px!important}
+}
+</style>
+</helmet>
+<div style="font-family: 'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif; color: #F5E7DC; background: #120A08; font-size: 17px; line-height: 1.55">
+
+  <!-- HERO met nav -->
+  <section id="top" style="position: relative; overflow: hidden; background: #120A08">
+    <img src="/_blob/9fbaef276eb9c994e65d985652d85ce8" alt="" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; pointer-events: none">
+    <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(18,10,8,.55) 0%, rgba(18,10,8,0) 22%, rgba(18,10,8,0) 60%, rgba(18,10,8,.6) 100%); pointer-events: none"></div>
+
+    <header style="position: relative">
+      <div class="fl-wrap" style="display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 84px">
+        <a href="#top" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #F5E7DC">
+          <svg width="44" height="35" viewBox="0 0 104 82" aria-hidden="true">
+            <defs><linearGradient id="flNav" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F7B184"/><stop offset="1" stop-color="#E06F2A"/></linearGradient></defs>
+            <path d="M80 20L88 6" stroke="#F5E7DC" stroke-width="2.8" stroke-linecap="round"/>
+            <circle cx="89" cy="5" r="3.8" fill="#F5E7DC"/>
+            <rect x="30" y="19" width="62" height="6" rx="2" fill="#F7B184"/>
+            <path d="M58 78V52C58 36 68 24 84 24H92V78Z" fill="#9C4A1C"/>
+            <path d="M8 78V52C8 36 18 24 34 24H84C68 24 58 36 58 52V78Z" fill="url(#flNav)"/>
+            <path d="M9.2 42.9H59.2M12.5 35.2H62.5M17.9 29.3H67.9M8 52H58M8 60H58M8 68H58" stroke="#FCD7BC" stroke-opacity=".7" stroke-width="1.4"/>
+            <rect x="26" y="70.5" width="18" height="3.6" rx="1.6" fill="#6B2457"/>
+          </svg>
+          <span style="font-family: Syne, sans-serif; font-weight: 700; font-size: 23px; letter-spacing: -0.02em">broodkast</span>
+        </a>
+        <nav class="fl-nav-links" style="font-size: 15px; font-weight: 500">
+          <a href="#integraties" style="text-decoration: none">Integraties</a>
+          <a href="#commandos" style="text-decoration: none">Commando's</a>
+          <a href="#footer" style="text-decoration: none">Contact</a>
+        </nav>
+        <a class="fl-btn fl-btn-main fl-nav-btn" href="https://discord.com/oauth2/authorize?client_id=1377039869645295656">Voeg toe aan Discord</a>
+      </div>
+    </header>
+
+    <div class="fl-wrap" style="position: relative; padding-top: 220px; padding-bottom: 88px">
+      <div class="fl-hero">
+        <div style="display: flex; flex-direction: column; gap: 26px; min-width: 0">
+          <div style="font-size: 13px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #FCD7BC">Nederlandstalige Discord-bot</div>
+          <h1 style="margin: 0; font-family: Syne, sans-serif; font-weight: 800; font-size: clamp(44px, 6.4vw, 92px); line-height: .96; letter-spacing: -0.035em; text-wrap: balance">Alles wat je volgt, vers achter het glas.</h1>
+          <p style="margin: 0; max-width: 44ch; font-size: 19px; color: #EBD7C8">Broodkast zet nieuwe video's, posts, releases, Twitch-streams en berichten van je eigen diensten in het Discord-kanaal dat jij kiest. Zoals een etalage die zichzelf bijvult.</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 12px">
+            <a class="fl-btn fl-btn-main" href="https://discord.com/oauth2/authorize?client_id=1377039869645295656">Voeg toe aan Discord</a>
+            <a class="fl-btn fl-btn-ghost" href="#integraties">Bekijk wat hij doet</a>
+          </div>
+        </div>
+        <div aria-label="Voorbeelden van meldingen" style="display: flex; flex-direction: column; gap: 12px; min-width: 0; width: 100%; max-width: 420px; justify-self: end">
+          <div class="fl-glass" style="border-radius: 18px; padding: 18px 20px">
+            <div style="font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #FCD7BC">Feed · YouTube · 19:40</div>
+            <div style="font-family: Syne, sans-serif; font-weight: 700; font-size: 18px; line-height: 1.25; margin-top: 4px">Nieuwe video: zuurdesem in 24 uur</div>
+          </div>
+          <div class="fl-glass" style="border-radius: 18px; padding: 18px 20px; border-color: rgba(238,138,62,.55)">
+            <div style="font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #EE8A3E">Twitch · nu live · 20:14</div>
+            <div style="font-family: Syne, sans-serif; font-weight: 700; font-size: 18px; line-height: 1.25; margin-top: 4px">bakkerbram is live: nachtploeg, deel 3</div>
+          </div>
+          <div class="fl-glass" style="border-radius: 18px; padding: 18px 20px">
+            <div style="font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #FCD7BC">Webhook · Server-monitor · 20:31</div>
+            <div style="font-family: Syne, sans-serif; font-weight: 700; font-size: 18px; line-height: 1.25; margin-top: 4px">Back-up van de server klaar</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTEGRATIES -->
+  <section id="integraties" style="position: relative">
+    <div class="fl-ribbel" style="position: absolute; inset: 0 0 auto 0; height: 1px"></div>
+    <div class="fl-wrap" style="padding-top: 112px; padding-bottom: 112px; display: flex; flex-direction: column; gap: 52px">
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
+        <h2 style="margin: 0; font-family: Syne, sans-serif; font-weight: 800; font-size: clamp(34px, 4.4vw, 58px); line-height: 1; letter-spacing: -0.035em; max-width: 13ch; text-wrap: balance">Wat er in de etalage komt</h2>
+        <p style="margin: 0; max-width: 44ch; color: #A8948A">Kies een kanaal en, als je wilt, een rol om te pingen. Met <b style="color: #F5E7DC; font-weight: 600">/volglijst</b> zie je wat je server volgt (tot 50 bronnen), met <b style="color: #F5E7DC; font-weight: 600">/ontvolg</b> haal je er een weg.</p>
+      </div>
+      <div class="fl-3">
+        <article class="fl-ribbel" style="border: 1px solid rgba(245,231,220,.14); border-radius: 22px; padding: 32px; display: flex; flex-direction: column; gap: 16px; min-width: 0; background-color: #1A100C">
+          <div style="font-family: Syne, sans-serif; font-weight: 800; font-size: 46px; line-height: 1; letter-spacing: -0.03em; color: #EE8A3E; font-variant-numeric: tabular-nums">10 min</div>
+          <h3 style="margin: 0; font-family: Syne, sans-serif; font-weight: 700; font-size: 26px; letter-spacing: -0.02em">Feeds</h3>
+          <p style="margin: 0; color: #CDB8AA">Elke RSS- of Atom-feed: YouTube-kanalen, subreddits, GitHub-releases, blogs. Oude berichten worden nooit opnieuw gepost.</p>
+          <div style="margin-top: auto; padding-top: 16px; border-top: 1px solid rgba(245,231,220,.14); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 14px"><b style="font-weight: 600">/volg rss</b><span style="color: #A8948A">max. 5 per ronde</span></div>
+        </article>
+        <article class="fl-ribbel" style="border: 1px solid rgba(245,231,220,.14); border-radius: 22px; padding: 32px; display: flex; flex-direction: column; gap: 16px; min-width: 0; background-color: #1A100C">
+          <div style="font-family: Syne, sans-serif; font-weight: 800; font-size: 46px; line-height: 1; letter-spacing: -0.03em; color: #EE8A3E; font-variant-numeric: tabular-nums">2 min</div>
+          <h3 style="margin: 0; font-family: Syne, sans-serif; font-weight: 700; font-size: 26px; letter-spacing: -0.02em">Twitch</h3>
+          <p style="margin: 0; color: #CDB8AA">Een melding zodra een streamer live gaat, met titel en spel en eventueel een rol-ping. Eén melding per stream.</p>
+          <div style="margin-top: auto; padding-top: 16px; border-top: 1px solid rgba(245,231,220,.14); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 14px"><b style="font-weight: 600">/volg twitch</b><span style="color: #A8948A">per streamer</span></div>
+        </article>
+        <article class="fl-ribbel" style="border: 1px solid rgba(245,231,220,.14); border-radius: 22px; padding: 32px; display: flex; flex-direction: column; gap: 16px; min-width: 0; background-color: #1A100C">
+          <div style="font-family: Syne, sans-serif; font-weight: 800; font-size: 46px; line-height: 1; letter-spacing: -0.03em; color: #EE8A3E">meteen</div>
+          <h3 style="margin: 0; font-family: Syne, sans-serif; font-weight: 700; font-size: 26px; letter-spacing: -0.02em">Webhooks</h3>
+          <p style="margin: 0; color: #CDB8AA">Een geheime URL voor je eigen diensten. Titel, tekst, link, afbeelding en kleur komen zo in je kanaal.</p>
+          <div style="margin-top: auto; padding-top: 16px; border-top: 1px solid rgba(245,231,220,.14); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 14px"><b style="font-weight: 600">/volg webhook</b><span style="color: #A8948A">1 bericht per 2 s</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMANDO'S op pruim -->
+  <section id="commandos" style="background: #6B2457">
+    <div class="fl-wrap" style="padding-top: 104px; padding-bottom: 104px; display: flex; flex-direction: column; gap: 44px">
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
+        <h2 style="margin: 0; font-family: Syne, sans-serif; font-weight: 800; font-size: clamp(34px, 4.4vw, 58px); line-height: 1; letter-spacing: -0.035em; max-width: 14ch; text-wrap: balance">En iets lekkers voor tussendoor</h2>
+        <p style="margin: 0; max-width: 40ch; color: #F0D3E3">Werken ook in je DM's en privégroepen als je Broodkast aan je eigen account toevoegt.</p>
+      </div>
+      <div class="fl-cmds">
+        <div style="background: rgba(18,10,8,.28); border-radius: 22px; padding: 30px; display: flex; flex-direction: column; gap: 14px; min-width: 0">
+          <h3 style="margin: 0; font-family: Syne, sans-serif; font-weight: 700; font-size: 24px">/koepraat</h3>
+          <p style="margin: 0; color: #F0D3E3">Een koe zegt wat jij typt, in een tekstballon.</p>
+          <div style="align-self: flex-start; background: #F5E7DC; color: #120A08; border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-weight: 600">Boe. Er is een nieuwe video.</div>
+        </div>
+        <div style="background: rgba(18,10,8,.28); border-radius: 22px; padding: 30px; display: flex; flex-direction: column; gap: 14px; min-width: 0">
+          <h3 style="margin: 0; font-family: Syne, sans-serif; font-weight: 700; font-size: 24px">/muntgooier</h3>
+          <p style="margin: 0; color: #F0D3E3">Kop of munt, voor elke knoop die doorgehakt moet worden.</p>
+          <div style="display: flex; align-items: center; gap: 12px; font-family: Syne, sans-serif; font-weight: 700; font-size: 20px"><span style="width: 44px; height: 44px; border-radius: 50%; background: #EE8A3E; color: #120A08; display: grid; place-items: center">K</span>Kop!</div>
+        </div>
+        <div style="background: rgba(18,10,8,.28); border-radius: 22px; padding: 30px; display: flex; flex-direction: column; gap: 14px; min-width: 0">
+          <h3 style="margin: 0; font-family: Syne, sans-serif; font-weight: 700; font-size: 24px">/apod</h3>
+          <p style="margin: 0; color: #F0D3E3">De astronomiefoto van de dag van NASA, met uitleg erbij.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="position: relative; overflow: hidden">
+    <img src="/_blob/9fbaef276eb9c994e65d985652d85ce8" alt="" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; transform: scaleY(-1); pointer-events: none">
+    <div style="position: absolute; inset: 0; background: rgba(18,10,8,.35); pointer-events: none"></div>
+    <div class="fl-wrap" style="position: relative; padding-top: 136px; padding-bottom: 136px; display: flex; flex-direction: column; align-items: flex-start; gap: 28px">
+      <h2 style="margin: 0; font-family: Syne, sans-serif; font-weight: 800; font-size: clamp(36px, 5vw, 68px); line-height: .98; letter-spacing: -0.035em; max-width: 12ch; text-wrap: balance">Zet de broodkast in je server.</h2>
+      <a class="fl-btn fl-btn-main" href="https://discord.com/oauth2/authorize?client_id=1377039869645295656">Voeg toe aan Discord</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="footer" style="background: #0A0605; font-size: 15px; color: #A8948A">
+    <div class="fl-wrap fl-foot" style="padding-top: 56px; padding-bottom: 32px">
+      <div style="display: flex; flex-direction: column; gap: 14px">
+        <span style="font-family: Syne, sans-serif; font-weight: 700; font-size: 22px; letter-spacing: -0.02em; color: #F5E7DC">broodkast</span>
+        <p style="margin: 0; max-width: 34ch">De Nederlandstalige Discord-bot die uitzendt wat jij volgt.</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px">
+        <span style="font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #F5E7DC">Bot</span>
+        <a href="https://discord.com/oauth2/authorize?client_id=1377039869645295656" style="text-decoration: none; color: #A8948A">Uitnodigen</a>
+        <a href="#integraties" style="text-decoration: none; color: #A8948A">Integraties</a>
+        <a href="#commandos" style="text-decoration: none; color: #A8948A">Commando's</a>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px">
+        <span style="font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #F5E7DC">Meer</span>
+        <a href="https://schellekensdigital.be" style="text-decoration: none; color: #A8948A">schellekensdigital.be</a>
+        <a href="#top" style="text-decoration: none; color: #A8948A">Privacy</a>
+        <a href="#top" style="text-decoration: none; color: #A8948A">Voorwaarden</a>
+      </div>
+      <div class="fl-ribbel" style="grid-column: 1 / -1; height: 18px; border-radius: 4px"></div>
+      <div style="grid-column: 1 / -1; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 13px">
+        <span>© 2026 Broodkast</span><span>broodkast.schellekensdigital.be</span>
+      </div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3000}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

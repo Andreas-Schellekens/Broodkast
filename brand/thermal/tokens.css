@@ -1,0 +1,25 @@
+/* Broodkast · Thermal. Donker thema.
+   Fonts (Google): https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Inter+Tight:wght@400;500;600&display=swap
+   Beeld: thermal.webp (gegenereerd met thermal.py). De warmteschaal is beeld, geen merkkleur. */
+:root {
+  /* merk: precies drie */
+  --main: #FF6A2B;      /* Gloei */
+  --secondary: #0B0806; /* Roet */
+  --accent: #FF2E88;    /* Infrarood */
+  /* neutraal */
+  --bg: var(--secondary);
+  --surface: #17120F;    /* Kool */
+  --text: #FFFFFF;
+  --text-soft: #CFC7C1;
+  --text-muted: #B3ABA5; /* As */
+  --line: rgba(255, 255, 255, .12);
+  /* warmteschaal: alleen voor beeld (HUD-balk, verlooptekst) */
+  --hitte: linear-gradient(90deg, #4A63FF, #8C3CF2 16%, #F02D8C 32%, #FF5A3C 48%, #FFA23A 62%, #FFD45A 76%, #FFF3C4);
+  /* typografie */
+  --font-display: "Big Shoulders Display", "Inter Tight", system-ui, sans-serif;
+  --font-body: "Inter Tight", system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* vorm */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  color-scheme: dark;
+}

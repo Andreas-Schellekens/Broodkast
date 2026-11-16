@@ -1,0 +1,25 @@
+/* Broodkast · Fluted glass. Donker thema.
+   Fonts (Google): https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Syne:wght@600;700;800&display=swap
+   Beeld: fluted.webp (gegenereerd met fluted.py). */
+:root {
+  /* merk: precies drie */
+  --main: #EE8A3E;      /* Gloed */
+  --secondary: #120A08; /* Roet */
+  --accent: #6B2457;    /* Pruim */
+  /* neutraal */
+  --bg: var(--secondary);
+  --bg-deep: #0A0605;
+  --surface: #1A100C;
+  --text: #F5E7DC;       /* Kaars */
+  --text-soft: #CDB8AA;
+  --text-muted: #A8948A; /* Rook */
+  --line: rgba(245, 231, 220, .14);
+  --ribbel: repeating-linear-gradient(90deg, rgba(245, 231, 220, .10) 0 1px, transparent 1px 22px);
+  /* typografie */
+  --font-display: "Syne", "Hanken Grotesk", system-ui, sans-serif;
+  --font-body: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* vorm */
+  --radius-pill: 999px; /* knoppen */
+  --radius-md: 22px;
+  color-scheme: dark;
+}

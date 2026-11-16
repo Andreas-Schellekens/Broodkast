@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 104 82" role="img" aria-label="Broodkast">
+  <!-- Thermal: broodkast in warmtebeeld; heetste punt linksonder in de kast. Antenne wit (voor donkere achtergrond). -->
+  <defs><radialGradient id="t" cx=".35" cy=".75" r=".9"><stop offset="0" stop-color="#FFF3C4"/><stop offset=".18" stop-color="#FFD45A"/><stop offset=".42" stop-color="#FF6A2B"/><stop offset=".7" stop-color="#FF2E88"/><stop offset="1" stop-color="#7A2CF0"/></radialGradient></defs>
+  <path d="M80 20L88 6" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round"/>
+  <circle cx="89" cy="5" r="3.8" fill="#FF2E88"/>
+  <path d="M95 1.5Q98.5 5 95 8.5" stroke="#FFFFFF" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+  <rect x="30" y="19" width="62" height="6" rx="2" fill="#FF2E88"/>
+  <path d="M58 78V52C58 36 68 24 84 24H92V78Z" fill="#B0206A"/>
+  <path d="M8 78V52C8 36 18 24 34 24H84C68 24 58 36 58 52V78Z" fill="url(#t)"/>
+  <path d="M9.2 42.9H59.2M12.5 35.2H62.5M17.9 29.3H67.9M8 52H58M8 60H58M8 68H58" stroke="#0B0806" stroke-opacity=".25" stroke-width="1.3"/>
+</svg>
