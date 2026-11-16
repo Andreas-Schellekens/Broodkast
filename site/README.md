@@ -28,3 +28,16 @@ komen, met `prerender = false` en server-routes op Cloudflare. De panelen gebrui
 
 Deployen is nog niet ingericht. Dat kan als Cloudflare Workers-project met statische assets (wrangler-config erbij)
 of via Cloudflare Pages, met het domein dat al op Cloudflare-DNS staat.
+
+## Online zetten
+
+De site draait op Cloudflare Pages (project `broodkast`) op https://broodkast.schellekensdigital.be.
+Het domein is een proxied CNAME `broodkast` → `broodkast.pages.dev` in de zone schellekensdigital.be.
+
+```bash
+npm run build
+npx wrangler pages deploy .svelte-kit/cloudflare --project-name broodkast --branch main
+```
+
+`cf deploy` ondersteunt SvelteKit nog niet; daarom deze ene Wrangler-opdracht, zonder Wrangler-configuratiebestand.
+Het Pages-project, het domein en de DNS-record zijn met `cf` aangemaakt.
