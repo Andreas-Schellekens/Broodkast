@@ -83,7 +83,7 @@
 
 <svelte:head>
 	<title>Commando's · Broodkast</title>
-	<meta name="description" content="Alle slash-commando's van Broodkast: meldingen instellen en beheren, en een paar voor de lol." />
+	<meta name="description" content="Alle slash-commando's van Broodkast: meldingen instellen en beheren, herinneringen, het weer, dobbelstenen en meer." />
 	<link rel="canonical" href="{SITE_URL}/commandos" />
 </svelte:head>
 
