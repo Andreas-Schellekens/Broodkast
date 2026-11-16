@@ -18,7 +18,7 @@ Per map vind je:
 - `logo.svg`;
 - het achtergrondbeeld (`.webp`) en het Python-script dat het maakt.
 
-De bron van de canvas staat in `site/drafts/canvas/` (de `.dc.html`-artboards en `canvas.json`).
+De bron van de canvas staat in `brand/canvas/` (de `.dc.html`-artboards en `canvas.json`).
 
 Vaste regels:
 - Precies drie merkkleuren (main, secondary, accent); daarnaast alleen neutrale tinten.
@@ -28,7 +28,7 @@ Vaste regels:
 Gekozen: Thermal, dus `BROODKAST_KLEUR = 0xFF6A2B` (Gloei). Ter info, de andere waarden waren: Stippel `0x5B5CF0`, Fluted glass `0xEE8A3E`, Thermal `0xFF6A2B`.
 
 ## Naar SvelteKit
-De echte site wordt SvelteKit met `adapter-cloudflare` in `site/`. Die wordt pas gebouwd als er een richting gekozen is.
+De echte site staat in `site/` (SvelteKit + `adapter-cloudflare`), gebouwd in de Thermal-stijl.
 `tokens.css` gaat één keer in `+layout.svelte`, de font-`<link>` in `app.html`.
 
 Deze blokken komen in alle drie de homepages terug en worden componenten:

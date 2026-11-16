@@ -3,7 +3,7 @@
 **Idee.** Een bakkersetalage achter geribbeld glas: warm ovenlicht dat in verticale banen breekt, met pruim in de schaduw.
 De lamellen van het roldeksel in het logo zijn de ribbels. Rustig en sfeervol: veel donker en één warme gloed.
 
-Canvas: https://claude.ai/artifact/DswmBgp8N23AqyfjNZcAeq (rij "Fluted glass"; bron in `site/drafts/canvas/Fluted*.dc.html`).
+Canvas: https://claude.ai/artifact/DswmBgp8N23AqyfjNZcAeq (rij "Fluted glass"; bron in `brand/canvas/Fluted*.dc.html`).
 
 ## Palet
 | Rol | Naam | Hex | Gebruik |

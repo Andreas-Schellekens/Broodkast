@@ -1,0 +1,48 @@
+/* Broodkast · Thermal. Donker thema.
+   Bron: brand/thermal/tokens.css. Fonts worden geladen in src/app.html. */
+:root {
+	/* merk: precies drie */
+	--main: #ff6a2b; /* Gloei: koppen van commando's, cijfers, logo */
+	--secondary: #0b0806; /* Roet: achtergrond */
+	--accent: #ff2e88; /* Infrarood: call to action, live, stippen */
+
+	/* call to action: het accent moet knallen */
+	--cta-bg: var(--accent);
+	--cta-bg-hover: #ff4d9b;
+	--cta-text: var(--secondary); /* donker op Infrarood: 5,6:1 */
+	--cta-glow: 0 0 0 1px rgb(255 46 136 / 0.7), 0 10px 36px rgb(255 46 136 / 0.45);
+	--cta-glow-hover: 0 0 0 1px rgb(255 77 155 / 0.9), 0 14px 48px rgb(255 46 136 / 0.65);
+
+	/* neutraal */
+	--bg: var(--secondary);
+	--surface: #17120f; /* Kool: panelen, later ook het dashboard */
+	--text: #ffffff;
+	--text-soft: #d9d2cd;
+	--text-muted: #b3aba5; /* As */
+	--line: rgb(255 255 255 / 0.12);
+	--line-strong: rgb(255 255 255 / 0.24);
+
+	/* warmteschaal: alleen voor beeld (HUD-balk, verlooptekst), nooit voor tekst of knoppen */
+	--hitte: linear-gradient(90deg, #4a63ff, #8c3cf2 16%, #f02d8c 32%, #ff5a3c 48%, #ffa23a 62%, #ffd45a 76%, #fff3c4);
+	--hitte-tekst: linear-gradient(90deg, var(--accent), var(--main) 55%, #ffd45a);
+
+	/* typografie */
+	--font-display: 'Big Shoulders Display', 'Inter Tight', system-ui, sans-serif;
+	--font-body: 'Inter Tight', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+	/* vorm en ritme */
+	--radius-sm: 6px;
+	--radius-md: 10px;
+	--wrap: 1200px;
+	--gutter: 32px;
+	--section: 112px;
+
+	color-scheme: dark;
+}
+
+@media (max-width: 520px) {
+	:root {
+		--gutter: 16px;
+		--section: 80px;
+	}
+}

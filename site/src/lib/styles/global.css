@@ -1,0 +1,87 @@
+@import './tokens.css';
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+}
+
+body {
+	margin: 0;
+	background: var(--bg);
+	color: var(--text);
+	font-family: var(--font-body);
+	font-size: 17px;
+	line-height: 1.55;
+	-webkit-font-smoothing: antialiased;
+}
+
+a {
+	color: inherit;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: 3px;
+}
+
+h1,
+h2,
+h3 {
+	margin: 0;
+	text-wrap: balance;
+}
+
+p {
+	margin: 0;
+}
+
+.wrap {
+	max-width: var(--wrap);
+	margin: 0 auto;
+	padding-left: max(var(--gutter), env(safe-area-inset-left, 0px));
+	padding-right: max(var(--gutter), env(safe-area-inset-right, 0px));
+}
+
+.display {
+	font-family: var(--font-display);
+	font-weight: 900;
+	text-transform: uppercase;
+	line-height: 0.9;
+}
+
+.hot {
+	background: var(--hitte-tekst);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+
+.eyebrow {
+	font-size: 12px;
+	font-weight: 600;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: var(--text-muted);
+}
+
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	white-space: nowrap;
+}

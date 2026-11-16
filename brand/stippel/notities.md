@@ -6,7 +6,7 @@ broodkast met roldeksel in beukenhout, met een kleine antenne erop. Het warme ho
 waar de hele richting op leunt. Layout: rustige grid, 1px-lijnen, kleine radii, één lichte sectie voor de integraties.
 
 Gemaakt als canvas in Claude Design: https://claude.ai/artifact/DswmBgp8N23AqyfjNZcAeq
-(artboards "Homepage" en "Merkblad"; bron in `site/drafts/canvas/`).
+(artboards "Homepage" en "Merkblad"; bron in `brand/canvas/`).
 
 ## Palet
 | Rol | Naam | Hex | Gebruik |

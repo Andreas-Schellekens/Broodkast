@@ -4,14 +4,18 @@
 warmtecamera: een temperatuurschaal, een richtkruis met "212,4 °C · korst" en grote condensed cijfers. Daarbij een zwarte
 grond, één korrelige hittegloed en harde kapitalen.
 
-Canvas: https://claude.ai/artifact/DswmBgp8N23AqyfjNZcAeq (rij "Thermal"; bron in `site/drafts/canvas/Thermal*.dc.html`).
+Canvas: https://claude.ai/artifact/DswmBgp8N23AqyfjNZcAeq (rij "Thermal"; bron in `brand/canvas/Thermal*.dc.html`).
 
 ## Palet
 | Rol | Naam | Hex | Gebruik |
 |---|---|---|---|
-| main | Gloei | `#FF6A2B` | knoppen, koppen van commando's |
+| main | Gloei | `#FF6A2B` | koppen van commando's, cijfers, logo, embedkleur van de bot |
 | secondary | Roet | `#0B0806` | achtergrond |
-| accent | Infrarood | `#FF2E88` | stippen, live, bovenplank van het logo |
+| accent | Infrarood | `#FF2E88` | **call to action**: knoppen met donkere tekst en een roze gloed; ook live-stippen en de bovenplank van het logo |
+
+De call to action moet knallen. Daarom is elke "Voeg toe aan Discord"-knop Infrarood met donkere tekst (5,6:1) en een
+gloed (`--cta-glow`). De grote knoppen pulseren zacht, behalve bij `prefers-reduced-motion`. De knoppen staan altijd op
+zwart: de hittegloed wordt aan de tekstkant weggewerkt met een zwarte overgang, zodat roze nooit op oranje staat.
 | neutraal | Wit | `#FFFFFF` | tekst |
 | neutraal | As | `#B3ABA5` | secundaire tekst |
 | neutraal | Kool | `#17120F` | panelen |
