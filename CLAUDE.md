@@ -65,7 +65,7 @@ Add a `Kind` variant in `db.rs`, plus a new migration that updates the `CHECK` c
 Commands, parameters and user-facing text are in Dutch (e.g. `muntgooier`, `volglijst`). Code comments can be Dutch or English. Brand colour: `BROODKAST_KLEUR` (0xC8873A).
 
 ## Deployment (Railway)
-`Dockerfile` (multi-stage: `rust:1-slim-trixie` → `debian:trixie-slim`) plus `railway.toml` (health check `/health`, 1 replica). The SQLite database must be on a Railway volume mounted at `/data`. Run only one instance, because of SQLite and the single gateway connection.
+`Dockerfile` (multi-stage: `rust:1-slim-trixie` → `debian:trixie-slim`) plus `railway.toml` (health check `/health`, 1 replica). The SQLite database must be on a Railway volume mounted at `/data`. The container runs as root on purpose: Railway mounts volumes root-owned, and a non-root user gets "unable to open database file". Run only one instance, because of SQLite and the single gateway connection.
 
 ## Music (not yet ported)
 The old `/muziek` (in `legacy/`) streamed YouTube via yt-dlp. The planned Rust stack is `songbird`; the `GUILD_VOICE_STATES` intent is already enabled. Streaming YouTube from a public bot breaks YouTube's terms and has gotten large music bots shut down, so decide on sources first.

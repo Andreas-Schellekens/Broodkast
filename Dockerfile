@@ -18,12 +18,12 @@ FROM debian:trixie-slim
 RUN apt-get update \
     && apt-get install -y --no-install-recommends ca-certificates \
     && rm -rf /var/lib/apt/lists/* \
-    && useradd --system --create-home broodkast \
-    && mkdir -p /data && chown broodkast /data
+    && mkdir -p /data
 
 COPY --from=build /src/target/release/broodkast /usr/local/bin/broodkast
 
-USER broodkast
+# Bewust geen aparte gebruiker: Railway mount volumes als root, waardoor een niet-root
+# proces niet in /data kan schrijven ("unable to open database file").
 # Mount hier een volume (op Railway: /data), anders ben je de database kwijt bij elke deploy.
 ENV DATABASE_URL=sqlite:///data/broodkast.db
 EXPOSE 8080
