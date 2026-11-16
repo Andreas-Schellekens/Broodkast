@@ -1,0 +1,7 @@
+target
+legacy
+.git
+.env
+.env.*
+*.db
+*.db-*

@@ -3,7 +3,11 @@ use crate::{Context, Error};
 const MAX_LENGTE: usize = 50;
 
 /// Praat als een koe
-#[poise::command(slash_command)]
+#[poise::command(
+    slash_command,
+    install_context = "Guild|User",
+    interaction_context = "Guild|BotDm|PrivateChannel"
+)]
 pub async fn koepraat(
     ctx: Context<'_>,
     #[description = "Wat moet onze lieve koe zeggen"] tekst: String,

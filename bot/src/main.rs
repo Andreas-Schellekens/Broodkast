@@ -1,20 +1,22 @@
+mod app;
 mod commands;
 mod config;
+mod db;
+mod integrations;
+mod util;
+mod web;
+
+use std::{sync::Arc, time::Duration};
 
 use anyhow::Context as _;
 use poise::serenity_prelude as serenity;
-use tracing::{error, info};
+use tracing::{error, info, warn};
 
-use crate::config::Config;
+pub use crate::app::Data;
+use crate::{app::App, config::Config, integrations::twitch::TwitchClient};
 
 pub type Error = anyhow::Error;
 pub type Context<'a> = poise::Context<'a, Data, Error>;
-
-/// Gedeelde staat die elk commando via `ctx.data()` kan gebruiken.
-pub struct Data {
-    pub http: reqwest::Client,
-    pub nasa_api_key: String,
-}
 
 async fn on_error(error: poise::FrameworkError<'_, Data, Error>) {
     match error {
@@ -38,6 +40,49 @@ async fn on_error(error: poise::FrameworkError<'_, Data, Error>) {
     }
 }
 
+/// Ruimt abonnementen op als de bot uit een server gezet wordt of een kanaal verdwijnt.
+async fn on_event(
+    framework: poise::FrameworkContext<'_, Data, Error>,
+    event: &serenity::FullEvent,
+) -> Result<(), Error> {
+    let db = &framework.user_data.db;
+    match event {
+        serenity::FullEvent::GuildDelete { incomplete, .. } if !incomplete.unavailable => {
+            let n = db::delete_guild(db, incomplete.id).await?;
+            info!(guild = %incomplete.id, verwijderd = n, "uit server verwijderd");
+        }
+        serenity::FullEvent::ChannelDelete { channel, .. } => {
+            db::delete_channel(db, channel.id).await?;
+        }
+        _ => {}
+    }
+    Ok(())
+}
+
+/// HTTP-client voor door gebruikers opgegeven URL's: redirects naar interne adressen worden
+/// niet gevolgd, en trage servers worden afgekapt.
+fn http_client() -> anyhow::Result<reqwest::Client> {
+    let redirects = reqwest::redirect::Policy::custom(|attempt| {
+        if attempt.previous().len() >= 5 {
+            attempt.error("te veel redirects")
+        } else if util::check_public_url(attempt.url().as_str()).is_err() {
+            attempt.error("redirect naar een niet-toegestaan adres")
+        } else {
+            attempt.follow()
+        }
+    });
+    Ok(reqwest::Client::builder()
+        .user_agent(concat!(
+            "Broodkast/",
+            env!("CARGO_PKG_VERSION"),
+            " (+https://github.com/Andreas-Schellekens/Broodkast)"
+        ))
+        .redirect(redirects)
+        .connect_timeout(Duration::from_secs(10))
+        .timeout(Duration::from_secs(20))
+        .build()?)
+}
+
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
     // .env is optioneel: in productie komen de variabelen gewoon uit de omgeving.
@@ -50,17 +95,42 @@ async fn main() -> anyhow::Result<()> {
         .init();
 
     let config = Config::from_env()?;
+    let http = http_client()?;
+    let app = Arc::new(App {
+        db: db::connect(&config.database_url).await?,
+        twitch: config.twitch.map(|t| TwitchClient::new(http.clone(), t)),
+        http,
+        discord: Arc::new(serenity::Http::new(&config.discord_token)),
+        nasa_api_key: config.nasa_api_key,
+        public_url: config.public_url,
+    });
+    info!(database = %config.database_url, "database klaar");
 
+    // Webserver (health check + webhooks) en pollers draaien los van de gateway.
+    let web_app = app.clone();
+    let port = config.port;
+    tokio::spawn(async move {
+        if let Err(e) = web::serve(web_app, port).await {
+            error!("webserver gestopt: {e:#}");
+        }
+    });
+    if app.public_url.is_none() {
+        warn!("geen PUBLIC_URL: /volg webhook staat uit");
+    }
+    integrations::spawn_pollers(&app);
+
+    let dev_guild_id = config.dev_guild_id;
     let framework = poise::Framework::builder()
         .options(poise::FrameworkOptions {
             commands: commands::all(),
             on_error: |error| Box::pin(on_error(error)),
+            event_handler: |framework, event| Box::pin(on_event(framework, event)),
             ..Default::default()
         })
         .setup(move |ctx, ready, framework| {
             Box::pin(async move {
                 let commands = &framework.options().commands;
-                match config.dev_guild_id {
+                match dev_guild_id {
                     // Guild-registratie is meteen zichtbaar, handig tijdens ontwikkeling.
                     Some(guild) => {
                         poise::builtins::register_in_guild(ctx, commands, guild).await?;
@@ -76,12 +146,7 @@ async fn main() -> anyhow::Result<()> {
                     "ingelogd als {} — de broodkast zendt uit 📻",
                     ready.user.name
                 );
-                Ok(Data {
-                    http: reqwest::Client::builder()
-                        .user_agent(concat!("Broodkast/", env!("CARGO_PKG_VERSION")))
-                        .build()?,
-                    nasa_api_key: config.nasa_api_key,
-                })
+                Ok(Data(app))
             })
         })
         .build();

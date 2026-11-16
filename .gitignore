@@ -16,3 +16,8 @@ node_modules/
 Thumbs.db
 .vscode/
 .idea/
+
+# Lokale database
+*.db
+*.db-shm
+*.db-wal
