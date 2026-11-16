@@ -1,0 +1,22 @@
+/* Broodkast · richting 3 Kruimel. Licht thema.
+   Fonts (Google): https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Onest:wght@400;500;600;700&display=swap */
+:root {
+  /* merk: precies drie */
+  --main: #F27A2E;      /* Toastoranje */
+  --secondary: #2D2A6E; /* Indigo */
+  --accent: #7EDDB5;    /* Munt */
+  /* neutraal */
+  --bg: #F5F4FA;        /* Meelwit */
+  --surface: #FFFFFF;
+  --text: #1D1B3A;      /* Inkt */
+  --text-muted: #5B5878;
+  --line-ink: 3px solid var(--text);
+  --shadow-hard: 5px 5px 0 var(--text);
+  /* typografie */
+  --font-display: "Bagel Fat One", "Onest", system-ui, sans-serif;
+  --font-body: "Onest", system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* vorm */
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  color-scheme: light;
+}

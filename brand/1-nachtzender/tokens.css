@@ -1,0 +1,23 @@
+/* Broodkast · richting 1 Nachtzender. Donker thema.
+   Fonts (Google): https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600&family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,600&display=swap */
+:root {
+  /* merk: precies drie */
+  --main: #E9A23B;      /* Ovengloed */
+  --secondary: #141831; /* Nachtblauw */
+  --accent: #9DB4FF;    /* Ether */
+  /* neutraal */
+  --bg: var(--secondary);
+  --surface: #1B2040;   /* app: panelen, tabellen */
+  --surface-deep: #0C0F22;
+  --text: #F1EFE9;
+  --text-muted: #8E92AB;
+  --line: rgba(241, 239, 233, .12);
+  /* typografie */
+  --font-display: "Bricolage Grotesque", "Albert Sans", system-ui, sans-serif;
+  --font-body: "Albert Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* vorm */
+  --radius-sm: 10px;
+  --radius-md: 18px;
+  --radius-pill: 999px;
+  color-scheme: dark;
+}

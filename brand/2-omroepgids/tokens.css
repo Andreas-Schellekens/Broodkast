@@ -1,0 +1,23 @@
+/* Broodkast · richting 2 Omroepgids. Licht thema.
+   Fonts (Google): https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..900&family=Instrument+Sans:wght@400;500;600&display=swap
+   Display-koppen: font-stretch: 125%; font-weight: 800. */
+:root {
+  /* merk: precies drie */
+  --main: #1E5B47;      /* Gidsgroen */
+  --secondary: #C8873A; /* Korstbruin */
+  --accent: #F4C430;    /* Signaalgeel */
+  /* neutraal */
+  --bg: #ECEFE8;        /* Papier */
+  --surface: #FFFFFF;   /* app: panelen, tabellen */
+  --surface-alt: #E1E6DD;
+  --text: #17201C;      /* Inkt */
+  --text-muted: #56635C;
+  --line: rgba(23, 32, 28, .14);
+  /* typografie */
+  --font-display: "Archivo", "Arial Black", system-ui, sans-serif;
+  --font-body: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* vorm */
+  --radius-sm: 6px;
+  --radius-md: 14px;
+  color-scheme: light;
+}
