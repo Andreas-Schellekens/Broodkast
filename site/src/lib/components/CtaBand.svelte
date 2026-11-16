@@ -6,7 +6,7 @@
 	<img src="/thermal.webp" alt="" aria-hidden="true" width="1800" height="1200" loading="lazy" />
 	<div class="wrap inhoud">
 		<h2 class="display">Zet de broodkast in je server</h2>
-		<p>Eén klik om toe te voegen, één commando om je eerste bron te volgen.</p>
+		<p>Je voegt de bot toe via Discord. Daarna volg je je eerste bron met /volg.</p>
 		<InviteButton size="lg" />
 	</div>
 </section>

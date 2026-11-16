@@ -30,8 +30,8 @@
 			limiet: 'per streamer'
 		},
 		{
-			label: 'Vertraging',
-			waarde: '0 sec',
+			label: 'Doorgestuurd',
+			waarde: 'Direct',
 			titel: 'Webhooks',
 			tekst: 'Een geheime URL voor je eigen diensten. Titel, tekst, link, afbeelding en kleur komen meteen in je kanaal.',
 			commando: '/volg webhook',
@@ -58,7 +58,7 @@
 <section id="integraties" class="sectie">
 	<div class="wrap stapel">
 		<div class="kop">
-			<h2 class="display">Drie bronnen. Altijd warm.</h2>
+			<h2 class="display">Feeds, Twitch en webhooks</h2>
 			<p>
 				Kies een kanaal en, als je wilt, een rol om te pingen. <CommandChip naam="/volglijst" /> toont wat je server volgt, tot
 				50 bronnen. <CommandChip naam="/ontvolg" /> haalt er een weg.

@@ -15,7 +15,7 @@
 			<h1 class="display">Vers uit de oven. <span class="hot">Recht in je kanaal.</span></h1>
 			<p class="lead">
 				Broodkast zet nieuwe video's, posts, releases, Twitch-streams en berichten van je eigen diensten in het Discord-kanaal
-				dat jij kiest, terwijl ze nog warm zijn.
+				dat jij kiest. Per bron is dat één commando.
 			</p>
 			<div class="acties">
 				<InviteButton size="lg" />
