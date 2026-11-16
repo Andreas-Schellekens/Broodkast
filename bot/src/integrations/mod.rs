@@ -33,7 +33,9 @@ pub fn spawn_pollers(app: &Arc<App>) {
     }
 }
 
-fn spawn_poller<F, Fut>(app: Arc<App>, name: &'static str, every: Duration, poll: F)
+/// Start een achtergrondtaak die `poll` elke `every` uitvoert. Ook gebruikt voor niet-integraties
+/// zoals het bezorgen van herinneringen.
+pub fn spawn_poller<F, Fut>(app: Arc<App>, name: &'static str, every: Duration, poll: F)
 where
     F: Fn(Arc<App>) -> Fut + Send + 'static,
     Fut: Future<Output = anyhow::Result<()>> + Send,
@@ -45,7 +47,7 @@ where
         loop {
             interval.tick().await;
             if let Err(e) = poll(app.clone()).await {
-                warn!(integration = name, "pollronde mislukt: {e:#}");
+                warn!(taak = name, "ronde mislukt: {e:#}");
             }
         }
     });
@@ -92,5 +94,6 @@ fn discord_error_code(e: &serenity::Error) -> Option<isize> {
     }
 }
 
-/// De merkkleur van Broodkast (korstbruin), voor embeds zonder eigen kleur.
-pub const BROODKAST_KLEUR: u32 = 0xC8873A;
+/// De merkkleur van Broodkast ("Gloei", main-kleur van de Thermal-huisstijl in `brand/thermal/`),
+/// voor embeds zonder eigen kleur.
+pub const BROODKAST_KLEUR: u32 = 0xFF6A2B;

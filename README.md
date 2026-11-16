@@ -16,14 +16,32 @@
 
 Bij elk `/volg`-commando kun je een ander `kanaal` kiezen en een `rol` die gepingd wordt.
 
-**Leuk** (werken ook als je Broodkast voor jezelf installeert, in DM's en groepsgesprekken)
+**Handig**
+
+| Commando | Wat het doet |
+|---|---|
+| `/herinner nieuw <over> <wat>` | Herinnering na bv. `10m`, `2u`, `1d` of `1u30m` (ook `lijst` en `wis`) |
+| `/weer <plaats>` | Het weer van nu en de komende dagen |
+| `/gebruiker [wie]` | Info en profielfoto van iemand |
+| `/serverinfo` | Info over de server |
+| `/opruimen <aantal> [van]` | Verwijder de laatste berichten (alleen met *Berichten beheren*) |
+| `/apod` | NASA's astronomiefoto van de dag |
+| `/over` | Info over Broodkast en een uitnodigingslink |
+
+**Leuk**
 
 | Commando | Wat het doet |
 |---|---|
 | `/muntgooier` | Kop of munt |
+| `/dobbel [worp]` | Gooi dobbelstenen, bv. `2d6` of `d20+3` |
+| `/kies <opties>` | Broodkast kiest voor jou, bv. `pizza, frietjes of sushi` |
+| `/glazenbol <vraag>` | Ja of nee? De glazen bol weet het |
+| `/mop` | Een mop, met de clou achter een spoiler |
 | `/koepraat <tekst>` | Laat een koe je tekst zeggen |
-| `/apod` | NASA's astronomiefoto van de dag |
-| `/over` | Info over Broodkast en een uitnodigingslink |
+
+Behalve `/serverinfo` en `/opruimen` werken die ook als je Broodkast voor jezelf installeert, in DM's en groepsgesprekken. Herinneringen komen dan via DM.
+
+Weergegevens komen van [Open-Meteo](https://open-meteo.com) (gratis voor niet-commercieel gebruik).
 
 ### Handige feed-URL's
 

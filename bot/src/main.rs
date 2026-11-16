@@ -118,6 +118,12 @@ async fn main() -> anyhow::Result<()> {
         warn!("geen PUBLIC_URL: /volg webhook staat uit");
     }
     integrations::spawn_pollers(&app);
+    integrations::spawn_poller(
+        app.clone(),
+        "herinneringen",
+        Duration::from_secs(30),
+        commands::herinner::bezorg,
+    );
 
     let dev_guild_id = config.dev_guild_id;
     let framework = poise::Framework::builder()

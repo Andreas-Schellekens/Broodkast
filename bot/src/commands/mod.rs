@@ -5,10 +5,19 @@
 //! Commando's die serverinstellingen wijzigen blijven `Guild`-only.
 
 mod apod;
+mod dobbel;
+mod gebruiker;
+mod glazenbol;
+pub mod herinner;
+mod kies;
 mod koepraat;
+mod mop;
 mod muntgooier;
+mod opruimen;
 mod over;
+mod serverinfo;
 mod volg;
+mod weer;
 
 use crate::{Data, Error};
 
@@ -16,8 +25,18 @@ pub fn all() -> Vec<poise::Command<Data, Error>> {
     vec![
         // Leuk
         muntgooier::muntgooier(),
+        dobbel::dobbel(),
+        kies::kies(),
+        glazenbol::glazenbol(),
+        mop::mop(),
         koepraat::koepraat(),
+        // Handig
+        herinner::herinner(),
+        weer::weer(),
         apod::apod(),
+        gebruiker::gebruiker(),
+        serverinfo::serverinfo(),
+        opruimen::opruimen(),
         over::over(),
         // Integraties
         volg::volg(),
