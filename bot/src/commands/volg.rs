@@ -7,7 +7,7 @@ use rand::distr::{Alphanumeric, SampleString};
 use crate::{
     Context, Error,
     db::{self, Kind, NewSubscription},
-    integrations::{BROODKAST_KLEUR, rss, twitch},
+    integrations::{BROODKAST_KLEUR, games, rss, twitch},
     util::truncate,
 };
 
@@ -17,7 +17,7 @@ const MAX_PER_GUILD: i64 = 50;
 /// Stuur meldingen van een dienst naar een kanaal
 #[poise::command(
     slash_command,
-    subcommands("volg_rss", "volg_twitch", "volg_webhook"),
+    subcommands("volg_rss", "volg_nieuws", "volg_twitch", "volg_games", "volg_webhook"),
     subcommand_required,
     guild_only,
     default_member_permissions = "MANAGE_GUILD",
@@ -41,8 +41,56 @@ async fn volg_rss(
     #[description = "Naam om te tonen (standaard de titel van de feed)"] naam: Option<String>,
 ) -> Result<(), Error> {
     ctx.defer_ephemeral().await?;
-    let url = url.trim().to_owned();
-    let feed = match rss::fetch(&ctx.data().http, &url).await {
+    add_feed(ctx, url.trim(), naam, kanaal, rol).await
+}
+
+#[derive(Debug, Clone, Copy, poise::ChoiceParameter)]
+enum Nieuwsbron {
+    #[name = "VRT NWS: alle artikels"]
+    VrtNws,
+    #[name = "VRT NWS: hoofdpunten"]
+    VrtNwsHoofdpunten,
+}
+
+impl Nieuwsbron {
+    fn url(self) -> &'static str {
+        match self {
+            Nieuwsbron::VrtNws => "https://www.vrt.be/vrtnws/nl.rss.articles.xml",
+            Nieuwsbron::VrtNwsHoofdpunten => "https://www.vrt.be/vrtnws/nl.rss.headlines.xml",
+        }
+    }
+
+    fn label(self) -> &'static str {
+        match self {
+            Nieuwsbron::VrtNws => "VRT NWS",
+            Nieuwsbron::VrtNwsHoofdpunten => "VRT NWS: hoofdpunten",
+        }
+    }
+}
+
+/// Volg een nieuwssite zonder een feed-URL te moeten zoeken
+#[poise::command(slash_command, rename = "nieuws")]
+async fn volg_nieuws(
+    ctx: Context<'_>,
+    #[description = "Welke nieuwsbron?"] bron: Nieuwsbron,
+    #[description = "Kanaal voor de meldingen (standaard dit kanaal)"]
+    #[channel_types("Text", "News")]
+    kanaal: Option<serenity::GuildChannel>,
+    #[description = "Rol om te pingen bij een nieuw artikel"] rol: Option<serenity::Role>,
+) -> Result<(), Error> {
+    ctx.defer_ephemeral().await?;
+    add_feed(ctx, bron.url(), Some(bron.label().to_owned()), kanaal, rol).await
+}
+
+/// Gedeeld door `/volg rss` en `/volg nieuws`: feed ophalen, toestand zetten en opslaan.
+async fn add_feed(
+    ctx: Context<'_>,
+    url: &str,
+    naam: Option<String>,
+    kanaal: Option<serenity::GuildChannel>,
+    rol: Option<serenity::Role>,
+) -> Result<(), Error> {
+    let feed = match rss::fetch(&ctx.data().http, url).await {
         Ok(feed) => feed,
         Err(e) => return reply(ctx, format!("❌ Kon die feed niet lezen: {e:#}")).await,
     };
@@ -50,12 +98,41 @@ async fn volg_rss(
         .or_else(|| feed.title.as_ref().map(|t| t.content.clone()))
         .map(|l| truncate(l.trim(), 100));
     let state = rss::initial_state(&feed);
-
     add(
         ctx,
         Kind::Rss,
-        &url,
+        url,
         label.as_deref(),
+        kanaal,
+        rol,
+        Some(&state),
+    )
+    .await?;
+    Ok(())
+}
+
+/// Krijg een melding wanneer een game tijdelijk gratis is op Epic of Steam
+#[poise::command(slash_command, rename = "gratisgames")]
+async fn volg_games(
+    ctx: Context<'_>,
+    #[description = "Welke winkel?"] platform: games::Platform,
+    #[description = "Kanaal voor de meldingen (standaard dit kanaal)"]
+    #[channel_types("Text", "News")]
+    kanaal: Option<serenity::GuildChannel>,
+    #[description = "Rol om te pingen bij een gratis game"] rol: Option<serenity::Role>,
+) -> Result<(), Error> {
+    ctx.defer_ephemeral().await?;
+    // Lopende giveaways meteen als gezien markeren; alleen nieuwe worden gemeld.
+    let lopend = match games::fetch(&ctx.data().http, platform).await {
+        Ok(g) => g,
+        Err(e) => return reply(ctx, format!("❌ Kon de gratis games niet ophalen: {e:#}")).await,
+    };
+    let state = games::initial_state(&lopend);
+    add(
+        ctx,
+        Kind::Games,
+        platform.as_target(),
+        Some(platform.label()),
         kanaal,
         rol,
         Some(&state),

@@ -9,7 +9,9 @@
 | Commando | Wat het doet |
 |---|---|
 | `/volg rss <url>` | Volg een RSS-, Atom- of JSON-feed |
+| `/volg nieuws <bron>` | Volg VRT NWS (alle artikels of de hoofdpunten) zonder feed-URL |
 | `/volg twitch <streamer>` | Melding wanneer een streamer live gaat |
+| `/volg gratisgames <platform>` | Melding wanneer een game tijdelijk gratis is op Epic of Steam |
 | `/volg webhook <naam>` | Krijg een geheime URL waarmee andere diensten berichten posten |
 | `/ontvolg <abonnement>` | Stop met een abonnement (met autocomplete) |
 | `/volglijst` | Toon alles wat deze server volgt |
@@ -41,7 +43,7 @@ Bij elk `/volg`-commando kun je een ander `kanaal` kiezen en een `rol` die gepin
 
 Behalve `/serverinfo` en `/opruimen` werken die ook als je Broodkast voor jezelf installeert, in DM's en groepsgesprekken. Herinneringen komen dan via DM.
 
-Weergegevens komen van [Open-Meteo](https://open-meteo.com) (gratis voor niet-commercieel gebruik).
+Weergegevens komen van [Open-Meteo](https://open-meteo.com) (gratis voor niet-commercieel gebruik), gratis games van [GamerPower](https://www.gamerpower.com).
 
 ### Handige feed-URL's
 

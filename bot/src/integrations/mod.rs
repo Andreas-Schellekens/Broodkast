@@ -1,11 +1,12 @@
 //! Integraties: bronnen die meldingen naar Discord-kanalen uitzenden.
 //!
-//! - Pollende integraties (`rss`, `twitch`) draaien als achtergrondtaak met een vast interval.
+//! - Pollende integraties (`rss`, `twitch`, `games`) draaien als achtergrondtaak met een vast interval.
 //! - `webhook` is push-gebaseerd en wordt bediend door de webserver in [`crate::web`].
 //!
 //! Een nieuwe integratie toevoegen: maak een module, voeg een [`Kind`] toe (en de CHECK in de
 //! migratie), start de poller in [`spawn_pollers`] en voeg een subcommando toe aan `/volg`.
 
+pub mod games;
 pub mod rss;
 pub mod twitch;
 
@@ -21,6 +22,12 @@ use crate::{
 
 pub fn spawn_pollers(app: &Arc<App>) {
     spawn_poller(app.clone(), "rss", Duration::from_secs(10 * 60), rss::poll);
+    spawn_poller(
+        app.clone(),
+        "games",
+        Duration::from_secs(30 * 60),
+        games::poll,
+    );
     if app.twitch.is_some() {
         spawn_poller(
             app.clone(),

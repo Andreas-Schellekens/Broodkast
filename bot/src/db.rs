@@ -32,6 +32,7 @@ pub enum Kind {
     Rss,
     Twitch,
     Webhook,
+    Games,
 }
 
 impl Kind {
@@ -40,6 +41,7 @@ impl Kind {
             Kind::Rss => "rss",
             Kind::Twitch => "twitch",
             Kind::Webhook => "webhook",
+            Kind::Games => "games",
         }
     }
 
@@ -48,6 +50,7 @@ impl Kind {
             Kind::Rss => "📰",
             Kind::Twitch => "🟣",
             Kind::Webhook => "🪝",
+            Kind::Games => "🎮",
         }
     }
 }
@@ -65,6 +68,7 @@ impl FromStr for Kind {
             "rss" => Ok(Kind::Rss),
             "twitch" => Ok(Kind::Twitch),
             "webhook" => Ok(Kind::Webhook),
+            "games" => Ok(Kind::Games),
             other => anyhow::bail!("onbekend soort abonnement: {other}"),
         }
     }

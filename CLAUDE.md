@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-Broodkast (Dutch pun on "broadcast") is a Dutch-language Discord bot, rebuilt in Rust. Its core feature is integrations: it broadcasts notifications from external services (RSS/Atom feeds, Twitch, inbound webhooks) into Discord channels. Longer-term plans: branding and an invite website.
+Broodkast (Dutch pun on "broadcast") is a Dutch-language Discord bot, rebuilt in Rust. Its core feature is integrations: it broadcasts notifications from external services (RSS/Atom feeds, Twitch, free games on Epic/Steam, inbound webhooks) into Discord channels. Longer-term plans: branding and an invite website.
 
 ## Commands
 
@@ -34,22 +34,23 @@ Cargo workspace with one member: `bot/` (crate `broodkast`). Future `site/` and 
 
 On startup `main.rs` builds an `Arc<App>` (`app.rs`: SQLite pool, a hardened `reqwest::Client`, a standalone `serenity::Http` for posting, optional `TwitchClient`, config), then starts three independent things:
 1. **Web server** (`web.rs`, axum): `GET /health` and `POST /webhook/{token}`.
-2. **Pollers** (`integrations::spawn_pollers`): one tokio interval task per polling integration (RSS every 10 min, Twitch every 2 min). `main.rs` also uses `integrations::spawn_poller` to deliver due reminders every 30 s (`commands::herinner::bezorg`).
+2. **Pollers** (`integrations::spawn_pollers`): one tokio interval task per polling integration (RSS every 10 min, Twitch every 2 min, games every 30 min). `main.rs` also uses `integrations::spawn_poller` to deliver due reminders every 30 s (`commands::herinner::bezorg`).
 3. **Discord gateway** via poise. The poise user data is `Data(Arc<App>)`, which derefs to `App`, so commands use `ctx.data().db` etc.
 
 The poise `event_handler` deletes subscriptions on `GuildDelete` (bot kicked) and `ChannelDelete`. `integrations::broadcast` also deletes subscriptions when Discord answers Unknown Channel.
 
 ### Modules
 - `db.rs`: all SQL, using `sqlx` runtime queries (not the `query!` macros, so no `DATABASE_URL` is needed at build time). Queries must be static strings; sqlx 0.9 rejects `format!`ed SQL, so use the `select!` macro for column lists. Discord IDs are `u64` but stored as `i64`. Migrations live in `bot/migrations/` and are embedded with `sqlx::migrate!` and run at startup.
-- `integrations/`: `mod.rs` holds `spawn_pollers` and `broadcast` (posts an embed with an optional role ping; `allowed_mentions` only allows that role). `rss.rs` and `twitch.rs` each expose `poll(Arc<App>)`.
-- `commands/`: one module per command; `mod.rs::all()` is the registered list. `volg.rs` contains `/volg` (subcommands `rss`, `twitch`, `webhook`), `/ontvolg` and `/volglijst`.
+- `integrations/`: `mod.rs` holds `spawn_pollers` and `broadcast` (posts an embed with an optional role ping; `allowed_mentions` only allows that role). `rss.rs`, `twitch.rs` and `games.rs` each expose `poll(Arc<App>)`. `games.rs` uses the free GamerPower API (`/api/filter?platform=…&type=game`), which returns an object instead of an array when nothing is active; the embed footer credits GamerPower.
+- `commands/`: one module per command; `mod.rs::all()` is the registered list. `volg.rs` contains `/volg` (subcommands `rss`, `nieuws`, `twitch`, `gratisgames`, `webhook`; `nieuws` is a preset list of feed URLs stored as normal `rss` subscriptions), `/ontvolg` and `/volglijst`.
 - `commands/herinner.rs`: `/herinner nieuw|lijst|wis` plus `bezorg`. Reminders are posted in the channel when the bot is in that server, otherwise (user-install, DMs) sent by DM; a failed channel post falls back to DM. Rows are deleted before sending, so a failed delivery is never retried.
 - `commands/weer.rs`: Open-Meteo geocoding + forecast, no API key. Open-Meteo's free tier is non-commercial only and needs attribution (the embed footer).
 - `util.rs`: `truncate`, `strip_html`, `check_public_url` and `fetch_limited`.
 
 ### Data model
-`reminders` (`user_id`, nullable `channel_id` where NULL means DM, `message`, `due_at`/`created_at` as Unix seconds) and `subscriptions`. The `subscriptions` table has `kind` (`rss`/`twitch`/`webhook`), `target` (feed URL, lowercase Twitch login, or secret webhook token), `channel_id`, optional `ping_role_id` and `label`, and `state`, an integration-specific string:
+`reminders` (`user_id`, nullable `channel_id` where NULL means DM, `message`, `due_at`/`created_at` as Unix seconds) and `subscriptions`. The `subscriptions` table has `kind` (`rss`/`twitch`/`webhook`/`games`), `target` (feed URL, lowercase Twitch login, secret webhook token, or `epic`/`steam`/`alle`), `channel_id`, optional `ping_role_id` and `label`, and `state`, an integration-specific string:
 - RSS: a JSON array of entry IDs from the top 50 items. Anything not in it counts as new. At most 5 items are posted per poll, oldest first. State is set when the subscription is created so existing items are never posted, and it is updated even after a failed send to avoid duplicates.
+- Games: a JSON array of the GamerPower IDs of the currently active giveaways, set at creation.
 - Twitch: the ID of the last announced stream. It is deliberately not cleared when a channel goes offline, so API blips don't cause duplicate announcements.
 
 ### Security
