@@ -7,4 +7,4 @@ export const SITE_URL = 'https://broodkast.schellekensdigital.be';
 export const CONTACT_EMAIL = 'schellekensdigital@gmail.com';
 
 export const SITE_DESCRIPTION =
-	"Broodkast is een Nederlandstalige Discord-bot die nieuwe video's, posts, releases, Twitch-streams en webhooks in je kanaal zet.";
+	"Broodkast is een Nederlandstalige Discord-bot die VRT NWS, gratis games, nieuwe video's, posts, releases, Twitch-streams en webhooks in je kanaal zet.";

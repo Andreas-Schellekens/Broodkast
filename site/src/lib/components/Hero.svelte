@@ -76,8 +76,8 @@
 		<div class="tekst">
 			<h1 class="display" bind:this={titel} data-hero="titel">Vers uit de oven. <span class="hot">Recht in je kanaal.</span></h1>
 			<p class="lead" data-hero="lead">
-				Broodkast zet nieuwe video's, posts, releases, Twitch-streams en berichten van je eigen diensten in het Discord-kanaal
-				dat jij kiest. Per bron is dat één commando.
+				Broodkast zet VRT NWS, gratis games, nieuwe video's, Twitch-streams en berichten van je eigen diensten in het
+				Discord-kanaal dat jij kiest. Volledig in het Nederlands, en per bron is dat één commando.
 			</p>
 			<div class="acties" data-hero="acties">
 				<InviteButton size="lg" />

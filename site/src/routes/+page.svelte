@@ -12,6 +12,18 @@
 
 	const integraties = [
 		{
+			titel: 'VRT NWS',
+			tekst: 'Het nieuws in je server, zonder een feed-URL te zoeken. Kies alle artikels of alleen de hoofdpunten.',
+			voorbeelden: ['Alle artikels', 'Hoofdpunten'],
+			commando: '/volg nieuws'
+		},
+		{
+			titel: 'Gratis games',
+			tekst: 'Een melding zodra een game tijdelijk gratis is. Alleen nieuwe giveaways, met de einddatum als die bekend is.',
+			voorbeelden: ['Epic Games Store', 'Steam'],
+			commando: '/volg gratisgames'
+		},
+		{
 			titel: 'Feeds',
 			tekst: 'Elke RSS- of Atom-feed. Alleen nieuwe berichten komen in je kanaal; oude worden nooit opnieuw gepost.',
 			voorbeelden: ['YouTube-kanalen', 'Subreddits', 'GitHub-releases', 'Blogs'],
@@ -35,7 +47,7 @@
 </script>
 
 <svelte:head>
-	<title>Broodkast · Discord-bot voor feeds, Twitch en webhooks</title>
+	<title>Broodkast · Nederlandstalige Discord-bot voor nieuws, games en meldingen</title>
 	<meta name="description" content={SITE_DESCRIPTION} />
 	<link rel="canonical" href={SITE_URL} />
 	<meta property="og:title" content="Broodkast" />
@@ -52,9 +64,9 @@
 <section id="integraties" class="sectie">
 	<div class="wrap stapel">
 		<div class="kop" data-reveal use:reveal={{ kinderen: true }}>
-			<h2 class="display">Feeds, Twitch en webhooks</h2>
+			<h2 class="display">Wat Broodkast volgt</h2>
 			<p>
-				Kies een kanaal en, als je wilt, een rol om te pingen. <CommandChip naam="/volglijst" /> toont wat je server volgt,
+				Volledig in het Nederlands. Kies een kanaal en, als je wilt, een rol om te pingen. <CommandChip naam="/volglijst" /> toont wat je server volgt,
 				tot 50 bronnen. <CommandChip naam="/ontvolg" /> haalt er een weg.
 			</p>
 		</div>
@@ -109,7 +121,7 @@
 	}
 	.raster3 {
 		display: grid;
-		grid-template-columns: repeat(3, minmax(0, 1fr));
+		grid-template-columns: repeat(6, minmax(0, 1fr));
 		gap: 1px;
 		background: var(--line);
 		border: 1px solid var(--line);
@@ -184,7 +196,18 @@
 	.alles:hover .pijl {
 		transform: translateX(8px);
 	}
+	/* Bovenste rij: twee brede kaarten (nieuws, games); daaronder drie. */
+	.raster3 > :global(*) {
+		grid-column: span 2;
+	}
+	.raster3 > :global(:nth-child(-n + 2)) {
+		grid-column: span 3;
+	}
 	@media (max-width: 900px) {
+		.raster3 > :global(*),
+		.raster3 > :global(:nth-child(-n + 2)) {
+			grid-column: auto;
+		}
 		.raster3 {
 			grid-template-columns: minmax(0, 1fr);
 		}

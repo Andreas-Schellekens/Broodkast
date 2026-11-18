@@ -7,7 +7,7 @@
 	titel="Privacybeleid"
 	pad="/privacy"
 	omschrijving="Welke gegevens de Discord-bot Broodkast en deze website verwerken, waarom, en hoe je ze laat verwijderen."
-	bijgewerkt="16 november 2026"
+	bijgewerkt="18 november 2026"
 >
 	<p>
 		Broodkast is een Discord-bot en deze website hoort erbij. Beide worden beheerd door <strong>Schellekens Digital</strong>
@@ -51,7 +51,8 @@
 	<ul>
 		<li><strong>Discord</strong>, waarop de bot draait en waarin hij meldingen post.</li>
 		<li><strong>Twitch</strong>: de bot vraagt aan Twitch of de kanalen die je volgt live zijn.</li>
-		<li>De sites achter de <strong>feeds</strong> die je volgt: de bot haalt die feeds op.</li>
+		<li>De sites achter de <strong>feeds</strong> die je volgt, zoals VRT NWS: de bot haalt die feeds op.</li>
+		<li><strong>GamerPower</strong>: daar haalt de bot de lijst met gratis games op. Er gaan geen gegevens van jou naartoe.</li>
 		<li><strong>Railway</strong>, waar de bot en zijn database draaien.</li>
 		<li><strong>Cloudflare</strong>, dat deze website host.</li>
 	</ul>

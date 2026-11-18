@@ -70,6 +70,30 @@ export const COMMANDOS: Commando[] = [
 		]
 	},
 	{
+		naam: '/volg nieuws',
+		uitleg: 'Volg VRT NWS zonder een feed-URL te zoeken: alle artikels of alleen de hoofdpunten.',
+		categorie: 'meldingen',
+		waar: 'server',
+		recht: 'Server beheren',
+		opties: [
+			{ naam: 'bron', uitleg: 'VRT NWS: alle artikels, of VRT NWS: hoofdpunten', verplicht: true },
+			kanaal,
+			{ naam: 'rol', uitleg: 'Rol om te pingen bij een nieuw artikel' }
+		]
+	},
+	{
+		naam: '/volg gratisgames',
+		uitleg: 'Krijg een melding zodra een game tijdelijk gratis is. Alleen nieuwe giveaways worden gemeld.',
+		categorie: 'meldingen',
+		waar: 'server',
+		recht: 'Server beheren',
+		opties: [
+			{ naam: 'platform', uitleg: 'Epic Games Store, Steam, of Epic en Steam', verplicht: true },
+			kanaal,
+			{ naam: 'rol', uitleg: 'Rol om te pingen bij een gratis game' }
+		]
+	},
+	{
 		naam: '/volglijst',
 		uitleg: 'Toon alles wat deze server volgt.',
 		categorie: 'meldingen',
